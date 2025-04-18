@@ -10,5 +10,19 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.senha = senha;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+	
+	
 	
 }
