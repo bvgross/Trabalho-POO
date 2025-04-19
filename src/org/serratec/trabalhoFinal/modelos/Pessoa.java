@@ -1,6 +1,6 @@
 package org.serratec.trabalhoFinal.modelos;
 
-public class Pessoa {
+public abstract class Pessoa {
 	private String nome;
 	private String cpf;
 	private String senha;
@@ -22,7 +22,8 @@ public class Pessoa {
 	public String getSenha() {
 		return senha;
 	}
-	
+
+	public abstract void exibirDados();
 	
 	
 }
