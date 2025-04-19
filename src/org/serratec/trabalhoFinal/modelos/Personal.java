@@ -10,7 +10,13 @@ public class Personal extends Pessoa {
 		this.especialidade = especialidade;
 		this.cref = cref;
 	}
+
+	@Override
+	public void exibirDados() {
 	
-	
+		
+	}
+
+		
 	
 }

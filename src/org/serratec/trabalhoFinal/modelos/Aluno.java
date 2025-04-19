@@ -14,5 +14,11 @@ public class Aluno extends Pessoa {
 		this.plano = plano;
 		this.personalContratado = personalContratado;
 	}
+
+	@Override
+	public void exibirDados() {
+		System.out.println("Exiba as informações: ");
+		
+	}
 	
 }
