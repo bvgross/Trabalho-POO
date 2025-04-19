@@ -14,7 +14,7 @@ public class Menu {
 		List<Pessoa> pessoas = new ArrayList<>();
 		pessoas.add(new Funcionario("Pedro", "111", "1234", Cargo.GERENTE));
 		pessoas.add(new Aluno("Ana", "222", "1234",
-				LocalDate.parse("2025-03-15"), Plano.MENSAL_TOTAL, "Joãozinho"));
+				LocalDate.parse("2025-03-15"), Plano.MENSAL1, "Joãozinho"));
 		pessoas.add(new Personal("Gabriela", "333", "1234", "Spinning", "254-5/6"));
 
 		boolean estaLogado;
@@ -46,7 +46,7 @@ public class Menu {
 					return true;
 				} else if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("funcionario")) {
 					menuFuncionario(pessoas); //sub-menu dos funcionarios
-					return true;
+					return true; 
 				} else {
 					menuPersonal(); //sub-menu dos personais
 					return true;
@@ -90,22 +90,28 @@ public class Menu {
 					1. Cadastrar novo plano.
 					2. Cadastrar novo aluno.
 					3. Cadastrar novo personal trainer.
-					4. Transmitir relatórios.
-					5. Valor total a recber no mês.
+					4. Emitir relatórios.
+					5. Valor total a receber no mês.
 					6. Sair.
 							""");
 			opcao = sc.nextInt();
 			sc.nextLine();
-			
+
 			switch (opcao) {
-			case 1 -> System.out.println("cadastrar plano");
+			case 1 -> cadastrarPlano();
 			case 2 -> cadastrarAluno(pessoas);
+			case 3 -> cadastrarPersonal(pessoas);
+			case 4 -> emitirRelatorios();
+			case 5 -> calcularFaturamentoMensal();
+			case 6 -> System.out.println("Encerrando aplicação...");
+			default -> System.out.println("Opção inválida, digite novamente!");
+
+			}
 			
-			
-		}while(opcao != 6);
-		
-		
-		
+		} while(opcao != 6);
+	}
+	private void cadastrarPlano(){
+
 	}
 
 	private void cadastrarAluno(List<Pessoa> pessoas) {
@@ -118,10 +124,29 @@ public class Menu {
 		System.out.println("Digite o plano do Aluno (MENSAL1, MENSAL2): "); //Criar exibir plano
 		String planoTemp = sc.nextLine(). toUpperCase();
 		Plano plano = Plano.valueOf(planoTemp);
-		System.out.println("Digite o Personal cobtratado: "); //criar exibir personal
+		System.out.println("Digite o Personal contratado: "); //criar exibir personal
 		String personal = sc.nextLine();
 		pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), plano, personal));
 	}
+
+	private void cadastrarPersonal(List<Pessoa> pessoas) {
+		System.out.println("Digite o nome do Personal: ");
+		String nome = sc.nextLine();
+		System.out.println("Digite o CPF do Personal: ");
+		String cpf = sc.nextLine();
+		System.out.println("Digite a senha do Personal: ");
+		String senha = sc.nextLine();
+		System.out.println("Digite a especialidade: ");
+		String especialidade = sc.nextLine();
+		System.out.println("Digite o CREF: ");
+		String cref = sc.nextLine();
+		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
+	}
+
+	private void emitirRelatorios(){}
+
+	private void calcularFaturamentoMensal() {}
+
 
 	public void menuPersonal() {
 		System.out.println("Personal!!");
