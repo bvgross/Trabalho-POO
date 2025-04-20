@@ -16,5 +16,11 @@ public class Avaliacao  {
 		this.descricao = descricao;
 	}
 
-
+public void exibirDados(){
+	System.out.println("Avaliação:"
+			+ "  | Aluno: " + aluno +
+			            " | Data: " + data + 
+			            " | Personal trainer: " + personalTrainer +
+			            " | Descrição: " + descricao);
+}
 }
