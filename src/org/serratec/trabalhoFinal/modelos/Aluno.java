@@ -4,16 +4,16 @@ import java.time.LocalDate;
 
 public class Aluno extends Pessoa {
 	private LocalDate dataMatricula;
-	private String planos;
+	private String plano;
 	private String personalContratado;
 	
 	
 
-	public Aluno(String nome, String cpf, String senha, LocalDate dataMatricula, String planos,
+	public Aluno(String nome, String cpf, String senha, LocalDate dataMatricula, String plano,
 			String personalContratado) {
 		super(nome, cpf, senha);
 		this.dataMatricula = dataMatricula;
-		this.planos = planos;
+		this.plano = plano;
 		this.personalContratado = personalContratado;
 	}
 
@@ -21,9 +21,9 @@ public class Aluno extends Pessoa {
 
 	@Override
 	public void exibirDados() {
-		System.out.println("Nome aluno: " + getNome() +
+		System.out.println("Nome: " + getNome() +
 				" | Data da matrícula: " + dataMatricula +
-				" | Planos: " + planos +
+				" | Plano: " + plano +
 				" | Personal Contratado: " + personalContratado);
 		
 	}

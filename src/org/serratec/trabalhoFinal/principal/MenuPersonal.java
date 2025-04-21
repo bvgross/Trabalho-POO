@@ -13,8 +13,9 @@ public class MenuPersonal {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
+            String nome = pessoas.get(i).getNome();
+            System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
-					========= Bem vindo Personal! ========= 
 					Digite a opção desejada: 
 					1. Visualizar alunos.
 					2. Registrar avaliações dos alunos.

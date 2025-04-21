@@ -30,10 +30,11 @@ public class Menu {
 		pessoas.add(new Personal("Lucas", "555", "1234", "Jump", "254-5/6"));
 		List<Avaliacao> avaliacoes = new ArrayList<>();
 		boolean estaLogado;
-		System.out.println("===== Academia SerraFit =====\n");
+		System.out.println("\n===== Academia SerraFit =====\n");
 		do {
 
 			//pedindo cpf e senha
+            System.out.println("LOGIN");
 			System.out.println("CPF:");
 			String cpf = sc.nextLine();
 			System.out.println("Senha:");
@@ -57,7 +58,7 @@ public class Menu {
 					MenuAluno.menuAluno(pessoas, i); //sub-menu dos alunos
 					return true;
 				} else if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("funcionario")) {
-					MenuFuncionario.menuFuncionario(pessoas, planos); //sub-menu dos funcionarios
+					MenuFuncionario.menuFuncionario(pessoas, planos, i); //sub-menu dos funcionarios
 					return true; 
 				} else {
 					MenuPersonal.menuPersonal(pessoas, i, avaliacoes); //sub-menu dos personais
