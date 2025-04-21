@@ -26,6 +26,8 @@ public class Menu {
 		pessoas.add(new Aluno("Ana", "222", "1234",
 				LocalDate.parse("2025-03-15"), planos.get(0).getNomePlano(),"Joãozinho"));
 		pessoas.add(new Personal("Gabriela", "333", "1234", "Spinning", "254-5/6"));
+		pessoas.add(new Personal("Bruno", "444", "1234", "Crossfit", "444-4/4"));
+		pessoas.add(new Personal("Lucas", "555", "1234", "Jump", "254-5/6"));
 		List<Avaliacao> avaliacoes = new ArrayList<>();
 		boolean estaLogado;
 		System.out.println("===== Academia SerraFit =====\n");

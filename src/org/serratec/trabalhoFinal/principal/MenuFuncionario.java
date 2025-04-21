@@ -137,20 +137,21 @@ public class MenuFuncionario {
 		int indice = sc.nextInt();
 		sc.nextLine();
 		List<Integer> indices = new ArrayList<>();
+		int iPersonal = 0;
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("Personal")) {
-				System.out.print(i + ". ");
+				System.out.print((iPersonal + 1) + ". ");
 				pessoas.get(i).exibirDados();
 				indices.add(i);
-				i++;
+				iPersonal++;
 			}
 		}
 		System.out.println("Escolha o número do personal: ");
 		int indice1 = sc.nextInt();
 		sc.nextLine();
 
-		pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(indice).getNomePlano(),
-				pessoas.get(indice + 1).getNome()));
+		pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(indice - 1).getNomePlano(),
+				pessoas.get(indices.get(indice1 - 1)).getNome()));
 	}
 
 	private static void cadastrarPersonal(List<Pessoa> pessoas) {
@@ -179,5 +180,6 @@ public class MenuFuncionario {
 	}
 
 	private static void calcularFaturamentoMensal() {
+		
 	}
 }
