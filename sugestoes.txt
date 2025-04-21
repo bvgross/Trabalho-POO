@@ -1,0 +1,44 @@
+---------------------------------
+Ler e salvar os arquivos de texto
+---------------------------------
+
+EXEMPLO DE CSV (apenas o que está entre as aspas):
+
+funcionarios.csv-------------------------
+
+"
+nome,cpf,senha,cargo
+Ana Oliveira,12345678901,8472,RECEPCIONISTA
+Carlos Souza,98765432109,1204,RECEPCIONISTA
+Mariana Costa,45678912345,9056,FAXINEIRO
+Bruno Lima,78912345678,3312,FAXINEIRO
+Juliana Rocha,32165498701,6789,GERENTE
+"
+
+----------------------------------------
+
+
+## Lendo arquivos
+
+Pela pesquisa que fiz... 
+O ideal no nosso caso, já que o arquivo csv não será tão grande é que a gente 
+carregue cada csv (um para cada classe que tivermos) ao inicar o programa e 
+transforme todos dados em objetos. (veja o exemplo)
+
+- exemplo -> (usando um loop) a cada linha do csv: 
+funcionarios.add(new FUNCIONARIO(dados1, dado2, dado3, dado4)) 
+
+Nesse caso todos os dados ficarão na memória do pc (como objetos em uma lista) 
+enquanto o programa roda.
+
+
+## Salvando arquivos
+
+A cada operação que fizermos (criar/remover/editar objetos) nós então 
+transformamos os objetos em csv novamente e salvamos o arquivo, sobrescrevendo 
+o antigo. Isso garante que toda alteração que fizermos seja salva no momento em
+que fizermos.
+
+Para evitar perda de dados, a cada vez que salvarmoso arquivo devemos também 
+gerar uma cópia, como backup, para evitar perda de dados.
+
