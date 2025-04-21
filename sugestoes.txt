@@ -26,7 +26,7 @@ carregue cada csv (um para cada classe que tivermos) ao inicar o programa e
 transforme todos dados em objetos. (veja o exemplo)
 
 - exemplo -> (usando um loop) a cada linha do csv: 
-funcionarios.add(new FUNCIONARIO(dados1, dado2, dado3, dado4)) 
+funcionarios.add(new FUNCIONARIO("dado1", "dado2", "dado3", Cargo.dado4))
 
 Nesse caso todos os dados ficarão na memória do pc (como objetos em uma lista) 
 enquanto o programa roda.
