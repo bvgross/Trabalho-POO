@@ -13,7 +13,9 @@ public class Personal extends Pessoa {
 
 	@Override
 	public void exibirDados() {
-	
+	System.out.println("Nome: " + getNome() +
+			 " | CREF: " + cref +
+			 " | Especialidade: " + especialidade);
 		
 	}
 

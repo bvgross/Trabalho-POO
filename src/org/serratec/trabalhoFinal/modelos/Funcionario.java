@@ -10,7 +10,8 @@ public Funcionario(String nome, String cpf, String senha, Cargo cargo) {
 
 @Override
 public void exibirDados() {
-
+	System.out.println("Nome funcionário: " + getNome() +
+			" | Cargo: " + cargo);
 	
 }
 

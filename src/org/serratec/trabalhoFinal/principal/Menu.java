@@ -8,19 +8,23 @@ import java.util.Scanner;
 import org.serratec.trabalhoFinal.modelos.Aluno;
 import org.serratec.trabalhoFinal.modelos.Avaliacao;
 import org.serratec.trabalhoFinal.modelos.Cargo;
+import org.serratec.trabalhoFinal.modelos.Frequencia;
 import org.serratec.trabalhoFinal.modelos.Funcionario;
+import org.serratec.trabalhoFinal.modelos.Periodicidade;
 import org.serratec.trabalhoFinal.modelos.Personal;
 import org.serratec.trabalhoFinal.modelos.Pessoa;
-import org.serratec.trabalhoFinal.modelos.Plano;
+import org.serratec.trabalhoFinal.modelos.Planos;
 
 public class Menu {
 	Scanner sc = new Scanner(System.in);
 	public void menu() {
 		//criando lista e populando com 1 de cada tipo de pessoa
+		List<Planos> planos = new ArrayList<>();
+		planos.add(new Planos("Total", Frequencia.SEMANA_INTEIRA, Periodicidade.ANUAL, 189.90, "Combo Total"));		
 		List<Pessoa> pessoas = new ArrayList<>();
 		pessoas.add(new Funcionario("Pedro", "111", "1234", Cargo.GERENTE));
 		pessoas.add(new Aluno("Ana", "222", "1234",
-				LocalDate.parse("2025-03-15"), Plano.MENSAL1, "Joãozinho"));
+				LocalDate.parse("2025-03-15"), planos.get(0).getNomePlano(),"Joãozinho"));
 		pessoas.add(new Personal("Gabriela", "333", "1234", "Spinning", "254-5/6"));
 		List<Avaliacao> avaliacoes = new ArrayList<>();
 		boolean estaLogado;
@@ -34,7 +38,7 @@ public class Menu {
 			String senha = sc.nextLine();
 
 			//conferindo se esrá estaLogado e se sim iniciando os sub-menus
-			estaLogado = confefirLogin(pessoas, cpf, senha, avaliacoes);
+			estaLogado = confefirLogin(pessoas, cpf, senha, avaliacoes, planos);
 			if (!estaLogado) {
 				System.out.println("\nCPF ou senha inválidos.\nDigite novamente abaixo.");
 			}
@@ -44,17 +48,17 @@ public class Menu {
 	/* ----------------------------------
     IMPLEMENTAÇÃO DAS FUNCÕES SEGUNDÁRIAS
     ---------------------------------- */
-	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes ) {
+	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes, List<Planos> planos) {
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (cpf.equals(pessoas.get(i).getCpf()) && senha.equals(pessoas.get(i).getSenha())) {
 				if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("aluno")) {
-					menuAluno(pessoas, i); //sub-menu dos alunos
+					MenuAluno.menuAluno(pessoas, i); //sub-menu dos alunos
 					return true;
 				} else if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("funcionario")) {
-					menuFuncionario(pessoas); //sub-menu dos funcionarios
+					MenuFuncionario.menuFuncionario(pessoas, planos); //sub-menu dos funcionarios
 					return true; 
 				} else {
-					menuPersonal(pessoas, i,  avaliacoes); //sub-menu dos personais
+					MenuPersonal.menuPersonal(pessoas, i, avaliacoes); //sub-menu dos personais
 					return true;
 				}
 			}
@@ -62,142 +66,4 @@ public class Menu {
 		return false;
 	}
 
-	public void menuAluno(List<Pessoa> pessoas, int i) {
-		int opcao;
-		do {
-
-			System.out.println("""
-					========= Bem vindo, Aluno! ========= 
-					Digite a opção desejada: 
-					1. Visualizar dados pessoais e plano contratado.
-					2. Contratar Personal Trainer.
-					3. Visualizar avaliação física.
-					4. Sair.
-							""");
-			opcao = sc.nextInt();
-			sc.nextLine();
-			switch (opcao) {
-			case 1 -> pessoas.get(i).exibirDados(); 
-			case 2 -> System.out.println("Personal contratado: ");
-			case 3 -> System.out.println("Avaliação física: ");
-			case 4 -> System.out.println("Encerrando aplicação.");
-			default -> System.out.println("Opção inválida, digite novamente!");
-			}
-
-		}while (opcao !=4);
-	}
-
-	public void menuFuncionario(List<Pessoa> pessoas) {
-		int opcao;
-		do {
-			System.out.println("""
-					========= Bem vindo! ========= 
-					Digite a opção desejada: 
-					1. Cadastrar novo plano.
-					2. Cadastrar novo aluno.
-					3. Cadastrar novo personal trainer.
-					4. Emitir relatórios.
-					5. Valor total a receber no mês.
-					6. Sair.
-							""");
-			opcao = sc.nextInt();
-			sc.nextLine();
-
-			switch (opcao) {
-			case 1 -> cadastrarPlano();
-			case 2 -> cadastrarAluno(pessoas);
-			case 3 -> cadastrarPersonal(pessoas);
-			case 4 -> emitirRelatorios();
-			case 5 -> calcularFaturamentoMensal();
-			case 6 -> System.out.println("Encerrando aplicação...");
-			default -> System.out.println("Opção inválida, digite novamente!");
-
-			}
-			
-		} while(opcao != 6);
-	}
-	private void cadastrarPlano(){
-
-	}
-
-	private void cadastrarAluno(List<Pessoa> pessoas) {
-		System.out.println("Digite o nome do Aluno: ");
-		String nome = sc.nextLine();
-		System.out.println("Digite o CPF do Aluno: ");
-		String cpf = sc.nextLine();
-		System.out.println("Digite a senha do Aluno: ");
-		String senha = sc.nextLine();
-		System.out.println("Digite o plano do Aluno (MENSAL1, MENSAL2): "); //Criar exibir plano
-		String planoTemp = sc.nextLine(). toUpperCase();
-		Plano plano = Plano.valueOf(planoTemp);
-		System.out.println("Digite o Personal contratado: "); //criar exibir personal
-		String personal = sc.nextLine();
-		pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), plano, personal));
-	}
-
-	private void cadastrarPersonal(List<Pessoa> pessoas) {
-		System.out.println("Digite o nome do Personal: ");
-		String nome = sc.nextLine();
-		System.out.println("Digite o CPF do Personal: ");
-		String cpf = sc.nextLine();
-		System.out.println("Digite a senha do Personal: ");
-		String senha = sc.nextLine();
-		System.out.println("Digite a especialidade: ");
-		String especialidade = sc.nextLine();
-		System.out.println("Digite o CREF: ");
-		String cref = sc.nextLine();
-		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
-	}
-
-	private void emitirRelatorios(){}
-
-	private void calcularFaturamentoMensal() {}
-
-
-	public void menuPersonal(List<Pessoa> pessoas,int i, List<Avaliacao> avaliacoes) {
-		int opcao;
-		do {
-			System.out.println("""
-					========= Bem vindo Personal! ========= 
-					Digite a opção desejada: 
-					1. Visualizar alunos.
-					2. Registrar avaliações dos alunos.
-					3. Visualizar lista de avaliações.
-					4. Sair.
-							""");
-			opcao = sc.nextInt();
-			sc.nextLine();
-
-			switch (opcao) {
-			case 1 -> visualizarAlunos(pessoas, i);
-			case 2 -> registrarAvaliacao(pessoas, i,avaliacoes);
-			case 3 -> visualizarAvaliacoes(pessoas, i,avaliacoes);
-			case 4 -> System.out.println("Encerrando aplicação...");
-			default -> System.out.println("Opção inválida, digite novamente!");
-
-			}
-			
-		} while(opcao != 4);
-	}
-
-	private void visualizarAvaliacoes(List<Pessoa> pessoas,int i, List<Avaliacao> avaliacoes) {
-		for (Avaliacao avaliacao : avaliacoes) {
-			avaliacao.exibirDados();
-		}
-	}
-
-	private void registrarAvaliacao(List<Pessoa> pessoas,int i, List<Avaliacao> avaliacoes) {
-		System.out.println("Digite o nome do Aluno: ");
-		String nome = sc.nextLine();
-		System.out.println("Digite a descrição da avaliação: ");
-		String descricao = sc.nextLine();
-		avaliacoes.add(new Avaliacao(nome, LocalDate.now(),pessoas.get(i).getNome(), descricao));
-		
-	}
-
-	private void visualizarAlunos(List<Pessoa> pessoas,int i) {
-		/*visuAvAlunos*/
-		
-	}
-	
 }
