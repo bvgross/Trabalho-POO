@@ -39,6 +39,6 @@ transformamos os objetos em csv novamente e salvamos o arquivo, sobrescrevendo
 o antigo. Isso garante que toda alteração que fizermos seja salva no momento em
 que fizermos.
 
-Para evitar perda de dados, a cada vez que salvarmoso arquivo devemos também 
-gerar uma cópia, como backup, para evitar perda de dados.
+Para evitar perda de dados, ANTES de cada salvamento de arquivo devemos gerar 
+uma cópia dele, como backup, para evitar perda de dados.
 
