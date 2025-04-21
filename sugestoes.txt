@@ -21,8 +21,8 @@ Juliana Rocha,32165498701,6789,GERENTE
 ## Lendo arquivos
 
 Pela pesquisa que fiz... 
-O ideal no nosso caso, já que o arquivo csv não será tão grande é que a gente 
-carregue cada csv (um para cada classe que tivermos) ao inicar o programa e 
+O ideal no nosso caso, já que o arquivo csv não será tão grande, é que a gente 
+leia cada csv (um para cada classe que tivermos) ao inicar o programa e 
 transforme todos dados em objetos. (veja o exemplo)
 
 - exemplo -> (usando um loop) a cada linha do csv: 
