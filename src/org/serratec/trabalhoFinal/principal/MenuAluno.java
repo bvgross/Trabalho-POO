@@ -11,9 +11,9 @@ public class MenuAluno {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
-
+            String nome = pessoas.get(i).getNome();
+            System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
-					========= Bem vindo, Aluno! ========= 
 					Digite a opção desejada: 
 					1. Visualizar dados pessoais e plano contratado.
 					2. Contratar Personal Trainer.

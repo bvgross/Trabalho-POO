@@ -20,7 +20,8 @@ public class Planos {
 
 
 	public void exibirDados() {
-		System.out.println("Plano: "  + nomePlano + "\n Descrição do plano contratado:  " + descricaoPlano + "\n Valor: R$ " + valor);
+		System.out.println("Plano: "  + nomePlano + "\nDescrição do plano contratado:  " + descricaoPlano +
+            "\nValor: R$ " + valor + "\nFrquência: " + frequencia + "\nVálidade do plano: " + periodicidade + "\n-------------------");
 
 	}
 
