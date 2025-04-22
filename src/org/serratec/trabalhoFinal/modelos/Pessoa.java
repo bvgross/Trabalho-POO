@@ -29,6 +29,11 @@ public abstract class Pessoa {
 		
 		
 	}
+	
+	public String getPersonalContratado() {
+		return null;
+		
+	}
 
 	public  void setPersonalContratado(String nomePersonalEscolhido) {};
 	

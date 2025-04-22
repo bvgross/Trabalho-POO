@@ -8,13 +8,13 @@ import org.serratec.trabalhoFinal.modelos.Avaliacao;
 import org.serratec.trabalhoFinal.modelos.Pessoa;
 
 public class MenuPersonal {
-	
+
 	public static void menuPersonal(List<Pessoa> pessoas,int i, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
-            String nome = pessoas.get(i).getNome();
-            System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
+			String nome = pessoas.get(i).getNome();
+			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
 					Digite a opção desejada: 
 					1. Visualizar alunos.
@@ -38,7 +38,7 @@ public class MenuPersonal {
 	}
 
 	private static void visualizarAvaliacoes(List<Pessoa> pessoas,int i, List<Avaliacao> avaliacoes) {
-		
+
 		for (Avaliacao avaliacao : avaliacoes) {
 			avaliacao.exibirDados();
 		}
@@ -48,14 +48,24 @@ public class MenuPersonal {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Aluno: ");
 		String nome = sc.nextLine();
-		System.out.println("Digite a descrição da avaliação: ");
-		String descricao = sc.nextLine();
-		avaliacoes.add(new Avaliacao(nome, LocalDate.now(),pessoas.get(i).getNome(), descricao));
+		System.out.println("Digite a altura do Aluno: ");
+		double altura = sc.nextDouble();
+		sc.nextLine();
+		System.out.println("Digite o peso do aluno: ");
+		double peso = sc.nextDouble();
+		sc.nextLine();
+		System.out.println("Digite a indicação para o aluno:  ");
+		String indicacao = sc.nextLine();
+		avaliacoes.add(new Avaliacao(nome, LocalDate.now(),pessoas.get(i).getNome(), indicacao, peso, altura ));
 
 	}
 
 	private static void visualizarAlunos(List<Pessoa> pessoas,int i) {
-		/*visuAvAlunos*/
-
+		for (Pessoa pessoa : pessoas) {
+			if(pessoa.getPersonalContratado().equalsIgnoreCase(pessoas.get(i).getNome())) {
+				pessoa.exibirDados();
+			}
+			//falta terminar
+		}
 	}
 }

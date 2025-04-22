@@ -38,6 +38,12 @@ public class Aluno extends Pessoa {
 
 
 
+	public String getPersonalContratado() {
+		return personalContratado;
+	}
+
+
+
 	public void setPersonalContratado(String personalContratado) {
 		this.personalContratado = personalContratado;
 	}

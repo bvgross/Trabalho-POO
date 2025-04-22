@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.serratec.trabalhoFinal.modelos.Avaliacao;
 import org.serratec.trabalhoFinal.modelos.Pessoa;
 
 public class MenuAluno {
 
-	public static void menuAluno(List<Pessoa> pessoas, int i) {
+	public static void menuAluno(List<Pessoa> pessoas, int i, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
+		Pessoa alunoAtual = pessoas.get(i);
 		int opcao;
 		do {
-			String nome = pessoas.get(i).getNome();
+			String nome = alunoAtual.getNome();
 			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
 					Digite a opção desejada: 
@@ -24,16 +26,16 @@ public class MenuAluno {
 			opcao = sc.nextInt();
 			sc.nextLine();
 			switch (opcao) {
-			case 1 -> pessoas.get(i).exibirDadosPessoais(); 
-			case 2 -> contratarPersonal(pessoas, i);			
-			case 3 -> System.out.println("Avaliação física: ");
+			case 1 -> alunoAtual.exibirDadosPessoais(); 
+			case 2 -> contratarPersonal(pessoas, alunoAtual);			
+			case 3 -> exibirAvaliacao(avaliacoes, alunoAtual);
 			case 4 -> System.out.println("Encerrando aplicação.");
 			default -> System.out.println("Opção inválida, digite novamente!");
 			}
 
 		}while (opcao !=4);
 	}
-	private static void contratarPersonal(List<Pessoa> pessoas, int i) {
+	private static void contratarPersonal(List<Pessoa> pessoas, Pessoa alunoAtual) {
 		Scanner sc = new Scanner(System.in);
 		List<Integer> indices = new ArrayList<>();
 		int indicePersonal = 0;
@@ -51,9 +53,16 @@ public class MenuAluno {
 		int escolhaPersonal = sc.nextInt();
 		sc.nextLine();
 		String nomePersonalEscolhido = pessoas.get(indices.get(escolhaPersonal-1)).getNome();
-		pessoas.get(i).setPersonalContratado( nomePersonalEscolhido );
+		alunoAtual.setPersonalContratado( nomePersonalEscolhido );
 		System.out.println("Personal contratado: " + nomePersonalEscolhido  );
 	}
 
+	private static void exibirAvaliacao(List<Avaliacao> avaliacoes, Pessoa alunoAtual) {
+		for (Avaliacao avaliacao : avaliacoes) {
+			if(avaliacao.getAluno().equalsIgnoreCase(alunoAtual.getNome())){
+				avaliacao.exibirDados();
+			}
 
+		}
+	}
 }

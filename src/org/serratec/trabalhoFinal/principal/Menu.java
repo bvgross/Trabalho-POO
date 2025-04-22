@@ -29,6 +29,7 @@ public class Menu {
 		pessoas.add(new Personal("Bruno", "444", "1234", "Crossfit", "444-4/4"));
 		pessoas.add(new Personal("Lucas", "555", "1234", "Jump", "254-5/6"));
 		List<Avaliacao> avaliacoes = new ArrayList<>();
+		avaliacoes.add(new Avaliacao("Ana", LocalDate.now() , "Bruno" , "Perder peso", 120, 1.50));
 		boolean estaLogado;
 		System.out.println("\n===== Academia SerraFit =====\n");
 		do {
@@ -55,7 +56,7 @@ public class Menu {
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (cpf.equals(pessoas.get(i).getCpf()) && senha.equals(pessoas.get(i).getSenha())) {
 				if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("aluno")) {
-					MenuAluno.menuAluno(pessoas, i); //sub-menu dos alunos
+					MenuAluno.menuAluno(pessoas, i, avaliacoes); //sub-menu dos alunos
 					return true;
 				} else if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("funcionario")) {
 					MenuFuncionario.menuFuncionario(pessoas, planos, i); //sub-menu dos funcionarios
