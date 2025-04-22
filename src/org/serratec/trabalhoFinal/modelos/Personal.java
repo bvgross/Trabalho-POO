@@ -19,6 +19,14 @@ public class Personal extends Pessoa {
 		
 	}
 
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
+	public String getCref() {
+		return cref;
+	}
+
 		
 	
 }

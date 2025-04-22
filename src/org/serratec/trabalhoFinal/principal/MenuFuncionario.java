@@ -18,8 +18,8 @@ public class MenuFuncionario {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
-            String nome = pessoas.get(i).getNome();
-            System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
+			String nome = pessoas.get(i).getNome();
+			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
 					Digite a opção desejada:
 					1. Cadastrar novo plano.
@@ -48,20 +48,20 @@ public class MenuFuncionario {
 
 	private static void cadastrarPlano(List<Planos> planos){
 		Scanner sc = new Scanner(System.in);
-        System.out.println("---------- Novo Plano ----------");
+		System.out.println("---------- Novo Plano ----------");
 		System.out.println("Nome: ");
 		String nomePlano = sc.nextLine();
-		
+
 		System.out.print("""
-			\nEscolha a frequência semanal do plano:
-			1. Semana inteira
-			2. Segunda a sexta
-			3. Segunda, quarta e sexta
-			4. Terça e quinta
-			""");
+				\nEscolha a frequência semanal do plano:
+				1. Semana inteira
+				2. Segunda a sexta
+				3. Segunda, quarta e sexta
+				4. Terça e quinta
+				""");
 		int escolha = 0;
 		Frequencia frequencia = null;
-		
+
 		do { 
 			escolha = sc.nextInt();
 			sc.nextLine();
@@ -74,23 +74,23 @@ public class MenuFuncionario {
 			default -> System.out.println("Opção inválida. Digite novamente. ");
 			}
 		} while (escolha < 1 || escolha > 4);
-		
+
 		System.out.println("""
-			\nEscolha a válidade do plano:
-			1. Anual
-			2. Semestral
-			3. Trimestral
-			4. Mensal
-			5. Quinzenal
-			6. Semanal
-			""");
-        int periodo = 0;
+				\nEscolha a válidade do plano:
+				1. Anual
+				2. Semestral
+				3. Trimestral
+				4. Mensal
+				5. Quinzenal
+				6. Semanal
+				""");
+		int periodo = 0;
 		Periodicidade periodicidade = null;
-			
+
 		do {
 			periodo = sc.nextInt();
 			sc.nextLine();
-			
+
 			switch (periodo) {
 			case 1 -> periodicidade = Periodicidade.ANUAL;
 			case 2 -> periodicidade = Periodicidade.SEMESTRAL;
@@ -99,23 +99,23 @@ public class MenuFuncionario {
 			case 5 -> periodicidade = Periodicidade.QUINZENAL;
 			case 6 -> periodicidade = Periodicidade.SEMANAL;
 			default -> System.out.println("Opção inválida. Digite novamente. ");
-			
+
 			}
-			
-						
+
+
 		}while (periodo < 1 || periodo > 6);
-		
+
 		System.out.println("\nValor do plano: R$ ");
 		double valor = sc.nextDouble();
 		sc.nextLine();
-		
+
 		System.out.println("\nDescrição do plano: ");
 		String descricao = sc.nextLine();
-		
+
 		planos.add(new Planos(nomePlano, frequencia, periodicidade, valor, descricao));
-        System.out.println("\nPLANO CADASTRADO.");
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
+		System.out.println("\nPLANO CADASTRADO.");
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
 	}
 
 
@@ -135,27 +135,9 @@ public class MenuFuncionario {
 		System.out.println("Escolha o número do plano: ");
 		int escolhaPlano = sc.nextInt();
 		sc.nextLine();
-		List<Integer> indices = new ArrayList<>();
-		int indicePersonal = 0;
-        System.out.println("\nPersonais cadastrados:\n-------------------");
-		for (int i = 0; i < pessoas.size(); i++) {
-			if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("Personal")) {
-				System.out.print((indicePersonal + 1) + ". ");
-				pessoas.get(i).exibirDados();
-				indices.add(i);
-				indicePersonal++;
-			}
-		}
-        System.out.println("-------------------");
-		System.out.println("Escolha o número do personal: ");
-		int escolhaPersonal = sc.nextInt();
+		System.out.println("ALUNO CADASTRADO.");
+		System.out.println("\nAperte enter para continuar...");
 		sc.nextLine();
-
-		pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(escolhaPlano - 1).getNomePlano(),
-				pessoas.get(indices.get(escolhaPersonal - 1)).getNome()));
-        System.out.println("ALUNO CADASTRADO.");
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
 	}
 
 	private static void cadastrarPersonal(List<Pessoa> pessoas) {
@@ -171,28 +153,28 @@ public class MenuFuncionario {
 		System.out.println("Digite o CREF: ");
 		String cref = sc.nextLine();
 		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
-        System.out.println("PERSONAL CADASTRADO.");
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
+		System.out.println("PERSONAL CADASTRADO.");
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
 	}
 
 	private static void emitirRelatorios(List<Pessoa> pessoas, List<Planos> planos) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nLista de pessoas cadastradas:\n");
-        for (int i = 0; i < pessoas.size(); i++) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\nLista de pessoas cadastradas:\n");
+		for (int i = 0; i < pessoas.size(); i++) {
 			pessoas.get(i).exibirDados();
-				}
+		}
 
-        System.out.println("\nLista de planos:\n");
+		System.out.println("\nLista de planos:\n");
 		for (int i = 0; i < planos.size(); i++) {
 			planos.get(i).exibirDados();
 		}
 
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
 	}
 
 	private static void calcularFaturamentoMensal() {
-		
+
 	}
 }

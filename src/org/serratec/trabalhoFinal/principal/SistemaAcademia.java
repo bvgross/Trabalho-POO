@@ -6,4 +6,3 @@ public class SistemaAcademia {
         menu.menu();
 	}
 }
-

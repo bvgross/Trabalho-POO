@@ -24,6 +24,13 @@ public abstract class Pessoa {
 	}
 
 	public abstract void exibirDados();
+
+	public void exibirDadosPessoais() {
+		
+		
+	}
+
+	public  void setPersonalContratado(String nomePersonalEscolhido) {};
 	
 	
 }
