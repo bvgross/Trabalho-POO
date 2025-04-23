@@ -19,17 +19,11 @@ public class Menu {
 	Scanner sc = new Scanner(System.in);
 	public void menu() {
 		//criando lista e populando com 1 de cada tipo de pessoa
-		List<Plano> planos = new ArrayList<>();
-		planos.add(new Plano("Total", Frequencia.SEMANA_INTEIRA, Periodicidade.ANUAL, 189.90, "Combo Total"));
-		List<Pessoa> pessoas = new ArrayList<>();
-		pessoas.add(new Funcionario("Pedro", "111", "1234", Cargo.GERENTE));
-		pessoas.add(new Aluno("Ana", "222", "1234",
-				LocalDate.parse("2025-03-15"), planos.get(0).getNomePlano()));
-		pessoas.add(new Personal("Gabriela", "333", "1234", "Spinning", "254-5/6"));
-		pessoas.add(new Personal("Bruno", "444", "1234", "Crossfit", "444-4/4"));
-		pessoas.add(new Personal("Lucas", "555", "1234", "Jump", "254-5/6"));
-		List<Avaliacao> avaliacoes = new ArrayList<>();
-		avaliacoes.add(new Avaliacao("Ana", LocalDate.now() , "Bruno" , "Perder peso", 120, 1.50));
+		List<Pessoa> pessoas = Carregar.carregarPessoas();
+		List<Avaliacao> avaliacoes = Carregar.carregarAvaliacoes();
+		List<Plano> planos = Carregar.carregarPlanos();
+		
+		pessoas.add(new Funcionario("Atendente", "111", "1234", Cargo.ATENDENTE));
 		boolean estaLogado;
 		System.out.println("\n===== Academia SerraFit =====\n");
 		do {

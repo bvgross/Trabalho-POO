@@ -3,12 +3,13 @@ package org.serratec.trabalhoFinal.modelos;
 public class Personal extends Pessoa {
 	private String especialidade;
 	private String cref;
-	private String tipo = "Personal";
+	private String tipo;
 	
 	public Personal(String nome, String cpf, String senha, String especialidade, String cref) {
 		super(nome, cpf, senha);
 		this.especialidade = especialidade;
 		this.cref = cref;
+		this.tipo = "Personal";
 	}
 
 	@Override
@@ -33,4 +34,16 @@ public class Personal extends Pessoa {
 		return tipo;
 	}
 
-}
+	@Override
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+		
+	}
+
+	
+	}
+
+
+
+
+	

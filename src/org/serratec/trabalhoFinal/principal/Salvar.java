@@ -19,7 +19,7 @@ public class Salvar {
 
         if(primeiro instanceof Pessoa) { //se o primeiro objeto for uma pessoa
             List<Pessoa> pessoas = (List<Pessoa>) lista;
-            try (FileWriter wr = new FileWriter("dados/pessoas.csv")) {
+            try (FileWriter wr = new FileWriter("pessoas.csv")) {
                 for (Pessoa p : pessoas) {
                     String tipo = p.getTipo();
 
@@ -48,7 +48,7 @@ public class Salvar {
 
         if(primeiro instanceof Plano) { //se o primeiro objeto for um plano
             List<Plano> planos = (List<Plano>) lista;
-            try(FileWriter wr = new FileWriter("dados/planos.csv")) {
+            try(FileWriter wr = new FileWriter("planos.csv")) {
                     for (Plano p : planos) {
                         wr.write(p.getNomePlano() + "," + p.getFrequencia() + "," + p.getPeriodicidade() + "," + p.getValor() + "," + p.getDescricaoPlano() + "\n");
                 }
@@ -59,7 +59,7 @@ public class Salvar {
 
         if(primeiro instanceof Avaliacao) { //se o primeiro objeto for uma avaliação
             List<Avaliacao> avaliacoes = (List<Avaliacao>) lista;
-            try(FileWriter wr = new FileWriter("dados/avaliacoes.csv")) {
+            try(FileWriter wr = new FileWriter("avaliacoes.csv")) {
                 for (Avaliacao a : avaliacoes) {
                     wr.write(a.getAluno() + "," + a.getData() + "," + a.getPersonalTrainer() + "," + a.getIndicacao() + "," + a.getPeso() + "," + a.getAltura() + "\n");
                 }

@@ -12,7 +12,7 @@ public class MenuPersonal {
 
 	public static void menuPersonal(List<Pessoa> pessoas,int i, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
-        Pessoa personalAtual = pessoas.get(i);
+		Pessoa personalAtual = pessoas.get(i);
 		int opcao;
 		do {
 			String nome = personalAtual.getNome();
@@ -41,34 +41,34 @@ public class MenuPersonal {
 
 	private static void visualizarAvaliacoes(List<Avaliacao> avaliacoes, Pessoa personalAtual) {
 		for (Avaliacao a : avaliacoes) {
-            if(a.getPersonalTrainer().equalsIgnoreCase(personalAtual.getNome())){
-			a.exibirDados();
-            }
+			if(a.getPersonalTrainer().equalsIgnoreCase(personalAtual.getNome())){
+				a.exibirDados();
+			}
 		}
 	}
 
 	private static void registrarAvaliacao(List<Avaliacao> avaliacoes, List<Pessoa> pessoas, Pessoa personalAtual) {
 		Scanner sc = new Scanner(System.in);
-        List<Integer> indices = new ArrayList<>();
-        int indiceAluno = 0;
-        System.out.println("\nAlunos cadastrados:\n-------------------");
-        for (int i = 0; i < pessoas.size(); i++) {
-            if (pessoas.get(i).getPersonalContratado() != null &&
-                pessoas.get(i).getTipo().equalsIgnoreCase("aluno") &&
-                pessoas.get(i).getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
-                System.out.print((indiceAluno + 1) + ". ");
-                pessoas.get(i).exibirDados();
-                indices.add(i);
-                indiceAluno++;
-            }
-        }
-        System.out.println("-------------------");
-        System.out.println("Nenhum aluno inscrito com você.");
-        if (indiceAluno == 0) return;
-        System.out.println("Escolha o número do alunp: ");
-        int escolhaAluno = sc.nextInt();
-        sc.nextLine();
-        String nome = pessoas.get(indices.get(escolhaAluno-1)).getNome();
+		List<Integer> indices = new ArrayList<>();
+		int indiceAluno = 0;
+		System.out.println("\nAlunos cadastrados:\n-------------------");
+		for (int i = 0; i < pessoas.size(); i++) {
+			if (pessoas.get(i).getPersonalContratado() != null &&
+					pessoas.get(i).getTipo().equalsIgnoreCase("aluno") &&
+					pessoas.get(i).getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
+				System.out.print((indiceAluno + 1) + ". ");
+				pessoas.get(i).exibirDados();
+				indices.add(i);
+				indiceAluno++;
+			}
+		}
+		System.out.println("-------------------");
+		System.out.println("Nenhum aluno inscrito com você.");
+		if (indiceAluno == 0) return;
+		System.out.println("Escolha o número do alunp: ");
+		int escolhaAluno = sc.nextInt();
+		sc.nextLine();
+		String nome = pessoas.get(indices.get(escolhaAluno-1)).getNome();
 		System.out.println("Digite a altura do Aluno: ");
 		double altura = sc.nextDouble();
 		sc.nextLine();
@@ -78,14 +78,22 @@ public class MenuPersonal {
 		System.out.println("Digite a indicação para o aluno:  ");
 		String indicacao = sc.nextLine();
 		avaliacoes.add(new Avaliacao(nome, LocalDate.now(),personalAtual.getNome(), indicacao, peso, altura ));
-        Salvar.salvar(avaliacoes);
+		Salvar.salvar(avaliacoes);
 	}
 
 	private static void visualizarAlunos(List<Pessoa> pessoas, Pessoa personalAtual) {
+		for (Pessoa pessoa : pessoas) {
+					if(pessoa.getTipo().equalsIgnoreCase("Aluno") && pessoa.getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
+					pessoa.exibirDadosPessoais();
+				}
+
+			}
+	}
+	/*private static void visualizarAlunos(List<Pessoa> pessoas, Pessoa personalAtual) {
 		for (Pessoa p : pessoas) {
 			if(p.getPersonalContratado() != null && p.getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
 				p.exibirDadosPessoais();
 			}
 		}
-	}
+	}*/
 }

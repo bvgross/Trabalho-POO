@@ -114,9 +114,10 @@ public class MenuFuncionario {
 
 		planos.add(new Plano(nomePlano, frequencia, periodicidade, valor, descricao));
 		System.out.println("\nPLANO CADASTRADO.");
-		System.out.println("\nAperte enter para continuar...");
 		sc.nextLine();
         Salvar.salvar(planos);
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 
 
@@ -137,10 +138,11 @@ public class MenuFuncionario {
 		int escolhaPlano = sc.nextInt();
 		sc.nextLine();
         pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(escolhaPlano - 1).getNomePlano()));
-		System.out.println("ALUNO CADASTRADO.");
-		System.out.println("\nAperte enter para continuar...");
+        System.out.println("ALUNO CADASTRADO.");
 		sc.nextLine();
         Salvar.salvar(pessoas);
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 
 	private static void cadastrarPersonal(List<Pessoa> pessoas) {
@@ -157,9 +159,10 @@ public class MenuFuncionario {
 		String cref = sc.nextLine();
 		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
 		System.out.println("PERSONAL CADASTRADO.");
-		System.out.println("\nAperte enter para continuar...");
 		sc.nextLine();
         Salvar.salvar(pessoas);
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 
 	private static void emitirRelatorios(List<Pessoa> pessoas, List<Plano> planos) {

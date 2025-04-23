@@ -2,11 +2,12 @@ package org.serratec.trabalhoFinal.modelos;
 
 public class Funcionario extends Pessoa {
 	private Cargo cargo;
-	private String tipo = "Funcionario";
+	private String tipo;
 
 public Funcionario(String nome, String cpf, String senha, Cargo cargo) {
 	super(nome, cpf, senha);
 	this.cargo = cargo;
+	this.tipo = "Funcionario";
 	}
 
     @Override
@@ -24,4 +25,9 @@ public Funcionario(String nome, String cpf, String senha, Cargo cargo) {
 	    return tipo;
     }
 
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+    
 }

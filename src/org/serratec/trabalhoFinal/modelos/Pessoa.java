@@ -30,6 +30,9 @@ public abstract class Pessoa {
 	public abstract void exibirDados();
 
 	public abstract String getTipo();
+	
+	public abstract void setTipo(String tipo);
+	
 
     //metodos override
 	public void exibirDadosPessoais() {}
