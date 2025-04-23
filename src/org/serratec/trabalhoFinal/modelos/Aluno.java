@@ -6,16 +6,34 @@ public class Aluno extends Pessoa {
 	private LocalDate dataMatricula;
 	private String plano;
 	private String personalContratado;
-	
-	
+	private String tipo = "Aluno";
+
+
 
 	public Aluno(String nome, String cpf, String senha, LocalDate dataMatricula, String plano) {
 		super(nome, cpf, senha);
 		this.dataMatricula = dataMatricula;
 		this.plano = plano;
-	
+
 	}
 
+
+	@Override
+	public LocalDate getDataMatricula() {
+		return dataMatricula;
+	}
+
+
+
+	public String getPlano() {
+		return plano;
+	}
+
+
+
+	public String getTipo() {
+		return tipo;
+	}
 
 
 	@Override
@@ -25,7 +43,7 @@ public class Aluno extends Pessoa {
 				" | Data da matrícula: " + dataMatricula +
 				" | Plano: " + plano +
 				" | Personal Contratado: " + personalContratado);
-		
+
 	}
 	@Override
 	public void exibirDadosPessoais() {
@@ -33,7 +51,7 @@ public class Aluno extends Pessoa {
 				" | CPF: " + getCpf() +
 				" | Data da matrícula: " + dataMatricula +
 				" | Plano: " + plano );
-		
+
 	}
 
 
@@ -47,5 +65,5 @@ public class Aluno extends Pessoa {
 	public void setPersonalContratado(String personalContratado) {
 		this.personalContratado = personalContratado;
 	}
-	
+
 }

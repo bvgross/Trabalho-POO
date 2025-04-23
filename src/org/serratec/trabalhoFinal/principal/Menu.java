@@ -47,6 +47,7 @@ public class Menu {
 				System.out.println("\nCPF ou senha inválidos.\nDigite novamente abaixo.");
 			}
 		} while (!estaLogado);
+		Salvar.salvar(pessoas,avaliacoes);
 	}
 
 	/* ----------------------------------

@@ -62,10 +62,10 @@ public class MenuPersonal {
 
 	private static void visualizarAlunos(List<Pessoa> pessoas,int i) {
 		for (Pessoa pessoa : pessoas) {
-			if(pessoa.getPersonalContratado().equalsIgnoreCase(pessoas.get(i).getNome())) {
-				pessoa.exibirDados();
+			Pessoa aluno  = pessoas.get(i);
+			if(pessoa.getClass().getSimpleName().equalsIgnoreCase("Aluno")) {
+				pessoa.exibirDadosPessoais();
 			}
-			//falta terminar
 		}
 	}
 }

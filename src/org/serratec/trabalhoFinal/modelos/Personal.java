@@ -1,9 +1,9 @@
 package org.serratec.trabalhoFinal.modelos;
 
 public class Personal extends Pessoa {
-
 	private String especialidade;
 	private String cref;
+	private String tipo = "Personal";
 	
 	public Personal(String nome, String cpf, String senha, String especialidade, String cref) {
 		super(nome, cpf, senha);
@@ -25,6 +25,10 @@ public class Personal extends Pessoa {
 
 	public String getCref() {
 		return cref;
+	}
+
+	public String getTipo() {
+		return tipo;
 	}
 
 		
