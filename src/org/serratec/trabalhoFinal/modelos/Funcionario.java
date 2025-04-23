@@ -7,7 +7,6 @@ public class Funcionario extends Pessoa {
 public Funcionario(String nome, String cpf, String senha, Cargo cargo) {
 	super(nome, cpf, senha);
 	this.cargo = cargo;
-	this.tipo = "Funcionario";
 	}
 
     @Override

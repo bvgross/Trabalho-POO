@@ -35,8 +35,10 @@ public class Salvar {
 
                     } else if (tipo.equals("Funcionario")) {
                         Funcionario f = (Funcionario) p;
-                        wr.write(tipo + "," + f.getNome() + "," + f.getCpf() + "," + f.getSenha() + "," +
-                            f.getCargo() + ",\n");
+                        if (!f.getTipo().equalsIgnoreCase("admin")) {
+                            wr.write(tipo + "," + f.getNome() + "," + f.getCpf() + "," + f.getSenha() + "," +
+                                f.getCargo() + ",\n");
+                        }
                     }
                 }
 

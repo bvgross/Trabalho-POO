@@ -35,7 +35,9 @@ public class Carregar {
 					LocalDate dataMatricula = LocalDate.parse(partes[4]);
 					String plano = partes[5];
 					String personalContratado = partes[6];
-					pessoas.add(new Aluno(nome, cpf, senha, dataMatricula, plano));
+                    Pessoa aluno = new Aluno(nome, cpf, senha, dataMatricula, plano);
+					pessoas.add(aluno);
+                    aluno.setPersonalContratado(partes[6]);
 				}
 
 				case "Personal" -> {

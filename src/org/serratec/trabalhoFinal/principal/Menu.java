@@ -22,8 +22,11 @@ public class Menu {
 		List<Pessoa> pessoas = Carregar.carregarPessoas();
 		List<Avaliacao> avaliacoes = Carregar.carregarAvaliacoes();
 		List<Plano> planos = Carregar.carregarPlanos();
-		
-		pessoas.add(new Funcionario("Atendente", "111", "1234", Cargo.ATENDENTE));
+
+        Pessoa atendente = new Funcionario("Atendente", "111", "1234", Cargo.ATENDENTE);
+		pessoas.add(atendente);
+        atendente.setTipo("ADMIN");
+
 		boolean estaLogado;
 		System.out.println("\n===== Academia SerraFit =====\n");
 		do {

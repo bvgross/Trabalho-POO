@@ -1,13 +1,7 @@
-Funcionario,Gerente,111,1234,GERENTE,
-Aluno,Beatriz Pinheiro,222,2222,2025-04-23,Musculação,null
-Aluno,Bruno Gross,333,3333,2025-04-23,Combo Total,null
-Aluno,Aline Mielli,444,4444,2025-04-23,Musculação,null
-Funcionario,Atendente,111,1234,ATENDENTE,
+Aluno,Beatriz Pinheiro,222,2222,2025-04-23,Musculação,Leticia Teles
+Aluno,Bruno Gross,333,3333,2025-04-23,Combo Total,Victor Campos
+Aluno,Aline Mielli,444,4444,2025-04-23,Musculação,Victor Campos
 Personal,Victor Campos,999,9999,Coach,999-99/9
 Personal,Leticia Teles,888,8888,Dança,888-88/8
-Funcionario,Atendente,111,1234,ATENDENTE,
-Aluno,Laryssa Campos,555,5555,2025-04-23,Combo Total,Leticia Teles
-Funcionario,Atendente,111,1234,ATENDENTE,
-Funcionario,Atendente,111,1234,ATENDENTE,
-Funcionario,Atendente,111,1234,ATENDENTE,
-Funcionario,Atendente,111,1234,ATENDENTE,
+Aluno,Laryssa Campos,555,5555,2025-04-23,Combo Total,Victor Campos
+Aluno,Paulo Roberto,666,6666,2025-04-23,Combo Total,Leticia Teles

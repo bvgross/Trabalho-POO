@@ -82,18 +82,12 @@ public class MenuPersonal {
 	}
 
 	private static void visualizarAlunos(List<Pessoa> pessoas, Pessoa personalAtual) {
-		for (Pessoa pessoa : pessoas) {
-					if(pessoa.getTipo().equalsIgnoreCase("Aluno") && pessoa.getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
-					pessoa.exibirDadosPessoais();
-				}
-
-			}
-	}
-	/*private static void visualizarAlunos(List<Pessoa> pessoas, Pessoa personalAtual) {
-		for (Pessoa p : pessoas) {
-			if(p.getPersonalContratado() != null && p.getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
-				p.exibirDadosPessoais();
-			}
-		}
-	}*/
+        for (Pessoa pessoa : pessoas) {
+            if (pessoa.getPersonalContratado() != null) {
+                if (pessoa.getTipo().equalsIgnoreCase("Aluno") && pessoa.getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
+                    pessoa.exibirDadosPessoais();
+                }
+            }
+        }
+    }
 }
