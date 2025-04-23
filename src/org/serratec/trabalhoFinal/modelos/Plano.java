@@ -1,6 +1,8 @@
 package org.serratec.trabalhoFinal.modelos;
 
-public class Plano {
+import java.util.List;
+
+public class Plano implements GerarRelatorio{
 	private String nomePlano;
 	private Frequencia frequencia;
 	private Periodicidade periodicidade;	
@@ -9,7 +11,7 @@ public class Plano {
 
 
 	public Plano(String nomePlano, Frequencia frequencia, Periodicidade periodicidade, double valor,
-                 String descricaoPlano) {
+			String descricaoPlano) {
 
 		this.nomePlano = nomePlano;
 		this.frequencia = frequencia;
@@ -21,29 +23,45 @@ public class Plano {
 
 	public void exibirDados() {
 		System.out.println("Plano: "  + nomePlano + "\nDescrição do plano contratado:  " + descricaoPlano +
-            "\nValor: R$ " + valor + "\nFrquência: " + frequencia + "\nVálidade do plano: " + periodicidade + "\n-------------------");
+				"\nValor: R$ " + valor + "\nFrquência: " + frequencia + "\nVálidade do plano: " + periodicidade + "\n-------------------");
 
 	}
 
-    public Frequencia getFrequencia() {
-        return frequencia;
-    }
+	public Frequencia getFrequencia() {
+		return frequencia;
+	}
 
-    public Periodicidade getPeriodicidade() {
-        return periodicidade;
-    }
+	public Periodicidade getPeriodicidade() {
+		return periodicidade;
+	}
 
-    public double getValor() {
-        return valor;
-    }
+	public double getValor() {
+		return valor;
+	}
 
-    public String getDescricaoPlano() {
-        return descricaoPlano;
-    }
+	public String getDescricaoPlano() {
+		return descricaoPlano;
+	}
 
-    public String getNomePlano() {
+	public String getNomePlano() {
 		return nomePlano;
 	}
-	
-	
+
+
+	@Override
+	public void gerar(List<Pessoa>pessoas, List<Plano>planos) {
+		for (Plano plano : planos) {
+			plano.exibirDados();
+		int contador = 0;
+			for(Pessoa pessoa : pessoas) {
+				if(pessoa.getPlano().equalsIgnoreCase(getNomePlano())) {
+					pessoa.getNome();
+					contador++;
+				}
+			}
+			System.out.println("Total de pessoas inlcuídas no plano: " + contador);
+		}		
+	}
+
+
 }

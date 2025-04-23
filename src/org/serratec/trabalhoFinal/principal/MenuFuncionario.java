@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.serratec.trabalhoFinal.modelos.Aluno;
+import org.serratec.trabalhoFinal.modelos.Avaliacao;
 import org.serratec.trabalhoFinal.modelos.Frequencia;
 import org.serratec.trabalhoFinal.modelos.Periodicidade;
 import org.serratec.trabalhoFinal.modelos.Personal;
@@ -13,7 +14,7 @@ import org.serratec.trabalhoFinal.modelos.Plano;
 
 public class MenuFuncionario {
 
-	public static void menuFuncionario(List<Pessoa> pessoas, List<Plano> planos, int i) {
+	public static void menuFuncionario(List<Pessoa> pessoas, List<Plano> planos, int i, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
         Pessoa funcionarioAtual = pessoas.get(i);
 		int opcao;
@@ -36,7 +37,7 @@ public class MenuFuncionario {
 			case 1 -> cadastrarPlano(planos);
 			case 2 -> cadastrarAluno(pessoas, planos);
 			case 3 -> cadastrarPersonal(pessoas);
-			case 4 -> emitirRelatorios(pessoas, planos);
+			case 4 -> emitirRelatorios(pessoas, planos, avaliacoes);
 			case 5 -> calcularFaturamentoMensal();
 			case 6 -> System.out.println("Encerrando aplicação...");
 			default -> System.out.println("Opção inválida, digite novamente!");
@@ -165,20 +166,32 @@ public class MenuFuncionario {
         sc.nextLine();
 	}
 
-	private static void emitirRelatorios(List<Pessoa> pessoas, List<Plano> planos) {
+	private static void emitirRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("\nLista de pessoas cadastradas:\n");
-		for (int i = 0; i < pessoas.size(); i++) {
-			pessoas.get(i).exibirDados();
-		}
+		int opcao;
+		do {
+			//String nome = funcionarioAtual.getNome();
+			System.out.println("""
+					Emitir relatórios:
+					1. Gerar relatório de planos.
+					2. Gerar relatório de pessoas.
+					3. Gerar relação de avaliações físicas.
+					4. Compilar todos os relatórios anteriores.
+					5. Voltar para o menu anterior.
+							""");
+			opcao = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcao) {
+			case 1 -> System.out.println("1"); //Plano.gerar(pessoas, planos);
+			case 2 -> System.out.println("2");
+			case 3 -> System.out.println("3");
+			case 4 -> System.out.println("4");
+			default -> System.out.println("Opção inválida, digite novamente!");
+			}
 
-		System.out.println("\nLista de planos:\n");
-		for (int i = 0; i < planos.size(); i++) {
-			planos.get(i).exibirDados();
-		}
-
-		System.out.println("\nAperte enter para continuar...");
-		sc.nextLine();
+		} while (opcao != 5);
+		return;
 	}
 
 	private static void calcularFaturamentoMensal() {
