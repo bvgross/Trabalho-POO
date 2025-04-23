@@ -1,7 +1,6 @@
 package org.serratec.trabalhoFinal.principal;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,15 +9,16 @@ import org.serratec.trabalhoFinal.modelos.Frequencia;
 import org.serratec.trabalhoFinal.modelos.Periodicidade;
 import org.serratec.trabalhoFinal.modelos.Personal;
 import org.serratec.trabalhoFinal.modelos.Pessoa;
-import org.serratec.trabalhoFinal.modelos.Planos;
+import org.serratec.trabalhoFinal.modelos.Plano;
 
 public class MenuFuncionario {
 
-	public static void menuFuncionario(List<Pessoa> pessoas, List<Planos> planos, int i) {
+	public static void menuFuncionario(List<Pessoa> pessoas, List<Plano> planos, int i) {
 		Scanner sc = new Scanner(System.in);
+        Pessoa funcionarioAtual = pessoas.get(i);
 		int opcao;
 		do {
-			String nome = pessoas.get(i).getNome();
+			String nome = funcionarioAtual.getNome();
 			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
 					Digite a opção desejada:
@@ -46,7 +46,7 @@ public class MenuFuncionario {
 		} while (opcao != 6);
 	}
 
-	private static void cadastrarPlano(List<Planos> planos){
+	private static void cadastrarPlano(List<Plano> planos){
 		Scanner sc = new Scanner(System.in);
 		System.out.println("---------- Novo Plano ----------");
 		System.out.println("Nome: ");
@@ -112,14 +112,15 @@ public class MenuFuncionario {
 		System.out.println("\nDescrição do plano: ");
 		String descricao = sc.nextLine();
 
-		planos.add(new Planos(nomePlano, frequencia, periodicidade, valor, descricao));
+		planos.add(new Plano(nomePlano, frequencia, periodicidade, valor, descricao));
 		System.out.println("\nPLANO CADASTRADO.");
 		System.out.println("\nAperte enter para continuar...");
 		sc.nextLine();
+        Salvar.salvar(planos);
 	}
 
 
-	private static void cadastrarAluno(List<Pessoa> pessoas, List<Planos> listaPlanos) {
+	private static void cadastrarAluno(List<Pessoa> pessoas, List<Plano> listaPlanos) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Aluno: ");
 		String nome = sc.nextLine();
@@ -135,9 +136,11 @@ public class MenuFuncionario {
 		System.out.println("Escolha o número do plano: ");
 		int escolhaPlano = sc.nextInt();
 		sc.nextLine();
+        pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(escolhaPlano - 1).getNomePlano()));
 		System.out.println("ALUNO CADASTRADO.");
 		System.out.println("\nAperte enter para continuar...");
 		sc.nextLine();
+        Salvar.salvar(pessoas);
 	}
 
 	private static void cadastrarPersonal(List<Pessoa> pessoas) {
@@ -156,9 +159,10 @@ public class MenuFuncionario {
 		System.out.println("PERSONAL CADASTRADO.");
 		System.out.println("\nAperte enter para continuar...");
 		sc.nextLine();
+        Salvar.salvar(pessoas);
 	}
 
-	private static void emitirRelatorios(List<Pessoa> pessoas, List<Planos> planos) {
+	private static void emitirRelatorios(List<Pessoa> pessoas, List<Plano> planos) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\nLista de pessoas cadastradas:\n");
 		for (int i = 0; i < pessoas.size(); i++) {

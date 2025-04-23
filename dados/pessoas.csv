@@ -1,6 +1,6 @@
-tipo,nome,cpf,senha,info1,info2
 Funcionario,Pedro,111,1234,GERENTE,
-Aluno,Ana,222,1234,2025-03-15,Total,Bruno
+Aluno,Ana,222,1234,2025-03-15,Total,null
 Personal,Gabriela,333,1234,Spinning,254-5/6
 Personal,Bruno,444,1234,Crossfit,444-4/4
 Personal,Lucas,555,1234,Jump,254-5/6
+Aluno,Gabriela,689789778,1234,2025-04-23,Teste,null

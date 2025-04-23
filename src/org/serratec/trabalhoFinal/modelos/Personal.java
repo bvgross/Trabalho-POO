@@ -19,10 +19,12 @@ public class Personal extends Pessoa {
 		
 	}
 
+    @Override
 	public String getEspecialidade() {
 		return especialidade;
 	}
 
+    @Override
 	public String getCref() {
 		return cref;
 	}
@@ -31,6 +33,4 @@ public class Personal extends Pessoa {
 		return tipo;
 	}
 
-		
-	
 }

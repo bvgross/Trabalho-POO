@@ -40,11 +40,11 @@ public class MenuAluno {
 		List<Integer> indices = new ArrayList<>();
 		int indicePersonal = 0;
 		System.out.println("\nPersonais cadastrados:\n-------------------");
-		for (int i1 = 0; i1 < pessoas.size(); i1++) {
-			if (pessoas.get(i1).getClass().getSimpleName().equalsIgnoreCase("Personal")) {
+		for (int i = 0; i < pessoas.size(); i++) {
+			if (pessoas.get(i).getTipo().equalsIgnoreCase("Personal")) {
 				System.out.print((indicePersonal + 1) + ". ");
-				pessoas.get(i1).exibirDados();
-				indices.add(i1);
+				pessoas.get(i).exibirDados();
+				indices.add(i);
 				indicePersonal++;
 			}
 		}
@@ -55,6 +55,7 @@ public class MenuAluno {
 		String nomePersonalEscolhido = pessoas.get(indices.get(escolhaPersonal-1)).getNome();
 		alunoAtual.setPersonalContratado( nomePersonalEscolhido );
 		System.out.println("Personal contratado: " + nomePersonalEscolhido  );
+        Salvar.salvar(pessoas);
 	}
 
 	private static void exibirAvaliacao(List<Avaliacao> avaliacoes, Pessoa alunoAtual) {

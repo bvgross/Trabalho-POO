@@ -1,6 +1,6 @@
 package org.serratec.trabalhoFinal.modelos;
 
-public class Planos {
+public class Plano {
 	private String nomePlano;
 	private Frequencia frequencia;
 	private Periodicidade periodicidade;	
@@ -8,8 +8,8 @@ public class Planos {
 	private String descricaoPlano;
 
 
-	public Planos(String nomePlano, Frequencia frequencia, Periodicidade periodicidade, double valor,
-			String descricaoPlano) {
+	public Plano(String nomePlano, Frequencia frequencia, Periodicidade periodicidade, double valor,
+                 String descricaoPlano) {
 
 		this.nomePlano = nomePlano;
 		this.frequencia = frequencia;
@@ -25,8 +25,23 @@ public class Planos {
 
 	}
 
+    public Frequencia getFrequencia() {
+        return frequencia;
+    }
 
-	public String getNomePlano() {
+    public Periodicidade getPeriodicidade() {
+        return periodicidade;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public String getDescricaoPlano() {
+        return descricaoPlano;
+    }
+
+    public String getNomePlano() {
 		return nomePlano;
 	}
 	

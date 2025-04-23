@@ -13,14 +13,14 @@ import org.serratec.trabalhoFinal.modelos.Funcionario;
 import org.serratec.trabalhoFinal.modelos.Periodicidade;
 import org.serratec.trabalhoFinal.modelos.Personal;
 import org.serratec.trabalhoFinal.modelos.Pessoa;
-import org.serratec.trabalhoFinal.modelos.Planos;
+import org.serratec.trabalhoFinal.modelos.Plano;
 
 public class Menu {
 	Scanner sc = new Scanner(System.in);
 	public void menu() {
 		//criando lista e populando com 1 de cada tipo de pessoa
-		List<Planos> planos = new ArrayList<>();
-		planos.add(new Planos("Total", Frequencia.SEMANA_INTEIRA, Periodicidade.ANUAL, 189.90, "Combo Total"));		
+		List<Plano> planos = new ArrayList<>();
+		planos.add(new Plano("Total", Frequencia.SEMANA_INTEIRA, Periodicidade.ANUAL, 189.90, "Combo Total"));
 		List<Pessoa> pessoas = new ArrayList<>();
 		pessoas.add(new Funcionario("Pedro", "111", "1234", Cargo.GERENTE));
 		pessoas.add(new Aluno("Ana", "222", "1234",
@@ -33,27 +33,20 @@ public class Menu {
 		boolean estaLogado;
 		System.out.println("\n===== Academia SerraFit =====\n");
 		do {
-
-			//pedindo cpf e senha
             System.out.println("LOGIN");
 			System.out.println("CPF:");
 			String cpf = sc.nextLine();
 			System.out.println("Senha:");
 			String senha = sc.nextLine();
 
-			//conferindo se esrá estaLogado e se sim iniciando os sub-menus
-			estaLogado = confefirLogin(pessoas, cpf, senha, avaliacoes, planos);
+			estaLogado = confefirLogin(pessoas, cpf, senha, avaliacoes, planos); //conferindo se esrá estaLogado e se sim iniciando os sub-menus
 			if (!estaLogado) {
 				System.out.println("\nCPF ou senha inválidos.\nDigite novamente abaixo.");
 			}
 		} while (!estaLogado);
-		Salvar.salvar(pessoas,avaliacoes);
 	}
 
-	/* ----------------------------------
-    IMPLEMENTAÇÃO DAS FUNCÕES SEGUNDÁRIAS
-    ---------------------------------- */
-	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes, List<Planos> planos) {
+	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes, List<Plano> planos) {
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (cpf.equals(pessoas.get(i).getCpf()) && senha.equals(pessoas.get(i).getSenha())) {
 				if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("aluno")) {

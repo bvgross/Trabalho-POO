@@ -13,6 +13,7 @@ public abstract class Pessoa {
 		this.senha = senha;
 	}
 
+    //getters da classe
 	public String getNome() {
 		return nome;
 	}
@@ -25,27 +26,28 @@ public abstract class Pessoa {
 		return senha;
 	}
 
+    //abstract
 	public abstract void exibirDados();
 
-	public void exibirDadosPessoais() {
+	public abstract String getTipo();
 
-	}
+    //metodos override
+	public void exibirDadosPessoais() {}
+
+    public void setPersonalContratado(String nomePersonalEscolhido) {}
 
 	public String getPersonalContratado() {
-		return null;
-	}
-
-	public  void setPersonalContratado(String nomePersonalEscolhido) {};
+        return null;
+    }
 
 	public LocalDate getDataMatricula() {
-		return null;
-	}
-
+        return null;
+    }
 
 	public String getPlano() {
-		return null;
-	}
-	
+        return null;
+    }
+
 	public String getEspecialidade() {
 		return null;
 	}
@@ -53,9 +55,8 @@ public abstract class Pessoa {
 	public String getCref() {
 		return null;
 	}
+
 	public Cargo getCargo() {
 		return null;
 	}
-
-	public abstract String getTipo();
 }

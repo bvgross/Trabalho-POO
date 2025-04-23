@@ -38,5 +38,23 @@ public class Avaliacao  {
 		return aluno;
 	}
 
+    public String getPersonalTrainer() {
+        return personalTrainer;
+    }
 
+    public LocalDate getData() {
+        return data;
+    }
+
+    public String getIndicacao() {
+        return indicacao;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
 }

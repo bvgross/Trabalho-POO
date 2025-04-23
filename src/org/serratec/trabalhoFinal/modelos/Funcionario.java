@@ -9,22 +9,19 @@ public Funcionario(String nome, String cpf, String senha, Cargo cargo) {
 	this.cargo = cargo;
 	}
 
-public Cargo getCargo() {
-	return cargo;
-}
+    @Override
+    public Cargo getCargo() {
+	    return cargo;
+    }
 
-@Override
-public void exibirDados() {
-	System.out.println("Nome: " + getNome() +
+    @Override
+    public void exibirDados() {
+	    System.out.println("Nome: " + getNome() +
 			" | Cargo: " + cargo);
-	
-}
+    }
 
-public String getTipo() {
-	return tipo;
-}
+    public String getTipo() {
+	    return tipo;
+    }
 
-
-	
-	
 }
