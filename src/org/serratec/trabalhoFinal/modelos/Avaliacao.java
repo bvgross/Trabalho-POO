@@ -2,6 +2,7 @@ package org.serratec.trabalhoFinal.modelos;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Avaliacao implements GerarRelatorio {
 	private String aluno;
@@ -25,6 +26,7 @@ public class Avaliacao implements GerarRelatorio {
 	}
 
 	public void exibirDados(){
+		 DateTimeFormatter formatoBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		DecimalFormat df = new DecimalFormat ("#.#");
 		System.out.println("Avaliação de :" + aluno +
 				  " | Data: " + data + 

@@ -16,7 +16,7 @@ public class MenuAluno {
 		do {
             LimparTela.Limpar();
 			String nome = alunoAtual.getNome();
-			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
+			System.out.println("\n========== Bem vindo(a) aluno(a), " + nome + "! ==========");
 			System.out.println("""
 					Digite a opção desejada: 
 					1. Visualizar dados pessoais e plano contratado.
@@ -35,10 +35,11 @@ public class MenuAluno {
             }
 			case 2 -> contratarPersonal(pessoas, alunoAtual);			
 			case 3 -> exibirAvaliacao(avaliacoes, alunoAtual);
-			case 4 -> System.out.println("Encerrando aplicação.");
+			case 4 -> {System.out.println("Encerrando aplicação.");
+			return;} //retorna para Login
 			default -> System.out.println("Opção inválida, digite novamente!");
 			}
-
+			
 		}while (opcao !=4);
 	}
 	private static void contratarPersonal(List<Pessoa> pessoas, Pessoa alunoAtual) {

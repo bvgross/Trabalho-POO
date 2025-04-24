@@ -21,20 +21,25 @@ public class Menu {
 		pessoas.add(atendente);
         atendente.setTipo("ADMIN");
 
-		boolean estaLogado;
-		System.out.println("\n===== Academia SerraFit =====\n");
-		do {
-            System.out.println("LOGIN");
-			System.out.println("CPF:");
-			String cpf = sc.nextLine();
-			System.out.println("Senha:");
-			String senha = sc.nextLine();
+        while (true) { // loop principal do sistema
+    		boolean estaLogado;
+    		System.out.println("\n===== Academia SerraFit =====\n");
 
-			estaLogado = confefirLogin(pessoas, cpf, senha, avaliacoes, planos); //conferindo se esrá estaLogado e se sim iniciando os sub-menus
-			if (!estaLogado) {
-				System.out.println("\nCPF ou senha inválidos.\nDigite novamente abaixo.");
-			}
-		} while (!estaLogado);
+    		do {
+    			System.out.println("LOGIN");
+    			System.out.println("CPF:");
+    			String cpf = sc.nextLine();
+    			System.out.println("Senha:");
+    			String senha = sc.nextLine();
+
+    			// submenus (aluno, funcionario ou personal) são chamados aqui
+    			estaLogado = confefirLogin(pessoas, cpf, senha, avaliacoes, planos);
+
+    			if (!estaLogado) {
+    				System.out.println("\nCPF ou senha inválidos.\nDigite novamente abaixo.");
+    			}
+    		} while (!estaLogado);
+        }
 	}
 
 	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes, List<Plano> planos) {
