@@ -50,7 +50,7 @@ public class Plano implements GerarRelatorio{
 
 	@Override
 	public void exibir() {
-		System.out.println("Nome do plano: " + getNomePlano() + "------------------------");
+		System.out.println("Nome do plano: " + getNomePlano());
 		
 	}
 

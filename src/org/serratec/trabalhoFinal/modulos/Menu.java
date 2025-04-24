@@ -1,17 +1,11 @@
-package org.serratec.trabalhoFinal.principal;
+package org.serratec.trabalhoFinal.modulos;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.serratec.trabalhoFinal.modelos.Aluno;
 import org.serratec.trabalhoFinal.modelos.Avaliacao;
 import org.serratec.trabalhoFinal.modelos.Cargo;
-import org.serratec.trabalhoFinal.modelos.Frequencia;
 import org.serratec.trabalhoFinal.modelos.Funcionario;
-import org.serratec.trabalhoFinal.modelos.Periodicidade;
-import org.serratec.trabalhoFinal.modelos.Personal;
 import org.serratec.trabalhoFinal.modelos.Pessoa;
 import org.serratec.trabalhoFinal.modelos.Plano;
 

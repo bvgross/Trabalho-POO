@@ -1,4 +1,4 @@
-package org.serratec.trabalhoFinal.principal;
+package org.serratec.trabalhoFinal.modulos;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ public class MenuPersonal {
 		Pessoa personalAtual = pessoas.get(i);
 		int opcao;
 		do {
+            LimparTela.Limpar();
 			String nome = personalAtual.getNome();
 			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
@@ -40,14 +41,20 @@ public class MenuPersonal {
 	}
 
 	private static void visualizarAvaliacoes(List<Avaliacao> avaliacoes, Pessoa personalAtual) {
+        LimparTela.Limpar();
+        Scanner sc = new Scanner(System.in);
 		for (Avaliacao a : avaliacoes) {
 			if(a.getPersonalTrainer().equalsIgnoreCase(personalAtual.getNome())){
 				a.exibirDados();
+                System.out.println("\n");
 			}
 		}
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 
 	private static void registrarAvaliacao(List<Avaliacao> avaliacoes, List<Pessoa> pessoas, Pessoa personalAtual) {
+        LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
 		List<Integer> indices = new ArrayList<>();
 		int indiceAluno = 0;
@@ -79,9 +86,13 @@ public class MenuPersonal {
 		String indicacao = sc.nextLine();
 		avaliacoes.add(new Avaliacao(nome, LocalDate.now(),personalAtual.getNome(), indicacao, peso, altura ));
 		Salvar.salvar(avaliacoes);
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 
 	private static void visualizarAlunos(List<Pessoa> pessoas, Pessoa personalAtual) {
+        LimparTela.Limpar();
+        Scanner sc = new Scanner(System.in);
         for (Pessoa pessoa : pessoas) {
             if (pessoa.getPersonalContratado() != null) {
                 if (pessoa.getTipo().equalsIgnoreCase("Aluno") && pessoa.getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
@@ -89,5 +100,7 @@ public class MenuPersonal {
                 }
             }
         }
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
     }
 }

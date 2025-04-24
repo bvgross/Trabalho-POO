@@ -1,4 +1,4 @@
-package org.serratec.trabalhoFinal.principal;
+package org.serratec.trabalhoFinal.modulos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ public class MenuAluno {
 		Pessoa alunoAtual = pessoas.get(i);
 		int opcao;
 		do {
+            LimparTela.Limpar();
 			String nome = alunoAtual.getNome();
 			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
@@ -26,7 +27,12 @@ public class MenuAluno {
 			opcao = sc.nextInt();
 			sc.nextLine();
 			switch (opcao) {
-			case 1 -> alunoAtual.exibirDadosPessoais(); 
+			case 1 -> {
+                LimparTela.Limpar();
+                alunoAtual.exibirDadosPessoais();
+                System.out.println("\nAperte enter para continuar...");
+                sc.nextLine();
+            }
 			case 2 -> contratarPersonal(pessoas, alunoAtual);			
 			case 3 -> exibirAvaliacao(avaliacoes, alunoAtual);
 			case 4 -> System.out.println("Encerrando aplicação.");
@@ -36,6 +42,7 @@ public class MenuAluno {
 		}while (opcao !=4);
 	}
 	private static void contratarPersonal(List<Pessoa> pessoas, Pessoa alunoAtual) {
+        LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
 		List<Integer> indices = new ArrayList<>();
 		int indicePersonal = 0;
@@ -56,14 +63,20 @@ public class MenuAluno {
 		alunoAtual.setPersonalContratado( nomePersonalEscolhido );
 		System.out.println("Personal contratado: " + nomePersonalEscolhido  );
         Salvar.salvar(pessoas);
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 
 	private static void exibirAvaliacao(List<Avaliacao> avaliacoes, Pessoa alunoAtual) {
+        LimparTela.Limpar();
+        Scanner sc = new Scanner(System.in);
 		for (Avaliacao avaliacao : avaliacoes) {
 			if(avaliacao.getAluno().equalsIgnoreCase(alunoAtual.getNome())){
 				avaliacao.exibirDados();
 			}
 
 		}
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
 	}
 }

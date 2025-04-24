@@ -1,4 +1,4 @@
-package org.serratec.trabalhoFinal.principal;
+package org.serratec.trabalhoFinal.modulos;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

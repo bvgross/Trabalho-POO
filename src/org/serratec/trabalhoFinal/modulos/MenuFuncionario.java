@@ -1,4 +1,4 @@
-package org.serratec.trabalhoFinal.principal;
+package org.serratec.trabalhoFinal.modulos;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +19,7 @@ public class MenuFuncionario {
         Pessoa funcionarioAtual = pessoas.get(i);
 		int opcao;
 		do {
+            LimparTela.Limpar();
 			String nome = funcionarioAtual.getNome();
 			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
@@ -48,6 +49,7 @@ public class MenuFuncionario {
 	}
 
 	private static void cadastrarPlano(List<Plano> planos){
+        LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("---------- Novo Plano ----------");
 		System.out.println("Nome: ");
@@ -115,7 +117,6 @@ public class MenuFuncionario {
 
 		planos.add(new Plano(nomePlano, frequencia, periodicidade, valor, descricao));
 		System.out.println("\nPLANO CADASTRADO.");
-		sc.nextLine();
         Salvar.salvar(planos);
         System.out.println("\nAperte enter para continuar...");
         sc.nextLine();
@@ -123,7 +124,8 @@ public class MenuFuncionario {
 
 
 	private static void cadastrarAluno(List<Pessoa> pessoas, List<Plano> listaPlanos) {
-		Scanner sc = new Scanner(System.in);
+        LimparTela.Limpar();
+        Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Aluno: ");
 		String nome = sc.nextLine();
 		System.out.println("Digite o CPF do Aluno: ");
@@ -140,13 +142,13 @@ public class MenuFuncionario {
 		sc.nextLine();
         pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(escolhaPlano - 1).getNomePlano()));
         System.out.println("ALUNO CADASTRADO.");
-		sc.nextLine();
         Salvar.salvar(pessoas);
         System.out.println("\nAperte enter para continuar...");
         sc.nextLine();
 	}
 
 	private static void cadastrarPersonal(List<Pessoa> pessoas) {
+        LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Personal: ");
 		String nome = sc.nextLine();
@@ -160,7 +162,6 @@ public class MenuFuncionario {
 		String cref = sc.nextLine();
 		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
 		System.out.println("PERSONAL CADASTRADO.");
-		sc.nextLine();
         Salvar.salvar(pessoas);
         System.out.println("\nAperte enter para continuar...");
         sc.nextLine();
@@ -170,6 +171,7 @@ public class MenuFuncionario {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
+              LimparTela.Limpar();
 			  System.out.println("""
 		                Emitir relatórios:
 		                1. Gerar relatório de planos.
@@ -190,12 +192,14 @@ public class MenuFuncionario {
 		                    for (Pessoa pessoa : pessoas) {
 		                        if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
 		                           pessoa.exibir();
-		                            contador++;
+                                   contador++;
 		                        }
 		                    }
 		                    System.out.println("Total de pessoas incluídas no plano: " + contador);
 		                    System.out.println("\n");
 		                }
+                        System.out.println("\nAperte enter para continuar...");
+                        sc.nextLine();
 		            }
 		            case 2 -> {
 		                System.out.println("Relatório de Pessoas:");
@@ -203,6 +207,8 @@ public class MenuFuncionario {
 		                    pessoa.exibirDados();
 		                    System.out.println("\n");
 		                }
+                        System.out.println("\nAperte enter para continuar...");
+                        sc.nextLine();
 		            }
 		            case 3 -> {
 		                System.out.println("Relatório de Avaliações Físicas:");
@@ -210,10 +216,12 @@ public class MenuFuncionario {
 		                    avaliacao.exibirDados();
 		                    System.out.println("\n");
 		                }
+                        System.out.println("\nAperte enter para continuar...");
+                        sc.nextLine();
 		            }
 		            case 4 -> {
 		                // Compilar tudo
-		                System.out.println("== Relatório de Planos ==");
+		                System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
 		                for (Plano plano : planos) {
 		                    plano.exibir();
 		                    int contador = 0;
@@ -224,21 +232,22 @@ public class MenuFuncionario {
 		                            contador++;
 		                        }
 		                    }
-		                    System.out.println("Total de pessoas incluídas no plano: " + contador);
-		                    System.out.println("\n");
+		                    System.out.println("Total de pessoas incluídas no plano: " + contador + "\n");
 		                }
 
-		                System.out.println("\n== Relatório de Pessoas ==");
+		                System.out.println("\n== Relatório de Pessoas ==\n-----------------------------------------------");
 		                for (Pessoa pessoa : pessoas) {
 		                    pessoa.exibirDados();
-		                    System.out.println("\n");
 		                }
+                        System.out.println("\n");
 
-		                System.out.println("\n== Relatório de Avaliações ==");
+		                System.out.println("\n== Relatório de Avaliações ==\n-----------------------------------------------");
 		                for (Avaliacao avaliacao : avaliacoes) {
 		                    avaliacao.exibirDados();
 		                    System.out.println("\n");
 		                }
+                        System.out.println("\nAperte enter para continuar...");
+                        sc.nextLine();
 		            }
 		            case 5 -> System.out.println("Voltando...");
 		            default -> System.out.println("Opção inválida, digite novamente!");
@@ -249,22 +258,27 @@ public class MenuFuncionario {
 	}
 
 	private static void calcularFaturamentoMensal(List<Pessoa> pessoas, List<Plano> planos) {
-		double totalFaturamento = 0;
+        LimparTela.Limpar();
+		Scanner sc = new Scanner(System.in);
+        double totalFaturamento = 0;
 					
-		for (Plano plano : planos) {
-		    int contador = 0;
+        for (Plano plano : planos) {
+            int contador = 0;
             System.out.println("Plano " + plano.getNomePlano() + ", valor: R$" + plano.getValor());
             for (Pessoa pessoa : pessoas) {
                 if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
-                     contador++;
+                contador++;
                 }
             }
             System.out.println("Total de pessoas incluídas no plano: " + contador);
             System.out.println("\n");
             double faturamentoPlano = contador * (plano.getValor());
             totalFaturamento += faturamentoPlano;
-                  }
+        }
 			
-			System.out.printf("Faturamento total mensal:  R$ %.2f\n", totalFaturamento);
-             }
-		}
+        System.out.printf("Faturamento total mensal:  R$ %.2f\n", totalFaturamento);
+        System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
+    }
+}
+
