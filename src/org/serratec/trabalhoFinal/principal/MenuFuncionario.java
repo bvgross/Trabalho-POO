@@ -38,7 +38,7 @@ public class MenuFuncionario {
 			case 2 -> cadastrarAluno(pessoas, planos);
 			case 3 -> cadastrarPersonal(pessoas);
 			case 4 -> emitirRelatorios(pessoas, planos, avaliacoes);
-			case 5 -> calcularFaturamentoMensal();
+			case 5 -> calcularFaturamentoMensal(pessoas, planos);
 			case 6 -> System.out.println("Encerrando aplicação...");
 			default -> System.out.println("Opção inválida, digite novamente!");
 
@@ -170,31 +170,101 @@ public class MenuFuncionario {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
-			//String nome = funcionarioAtual.getNome();
-			System.out.println("""
-					Emitir relatórios:
-					1. Gerar relatório de planos.
-					2. Gerar relatório de pessoas.
-					3. Gerar relação de avaliações físicas.
-					4. Compilar todos os relatórios anteriores.
-					5. Voltar para o menu anterior.
-							""");
-			opcao = sc.nextInt();
-			sc.nextLine();
+			  System.out.println("""
+		                Emitir relatórios:
+		                1. Gerar relatório de planos.
+		                2. Gerar relatório de pessoas.
+		                3. Gerar relação de avaliações físicas.
+		                4. Compilar todos os relatórios anteriores.
+		                5. Voltar para o menu anterior.
+		                """);
+		        opcao = sc.nextInt();
+		        sc.nextLine();
+
+		        switch (opcao) {
+		            case 1 -> {
+		                for (Plano plano : planos) {
+		                    plano.exibir();
+		                    int contador = 0;
+		                    System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
+		                    for (Pessoa pessoa : pessoas) {
+		                        if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+		                           pessoa.exibir();
+		                            contador++;
+		                        }
+		                    }
+		                    System.out.println("Total de pessoas incluídas no plano: " + contador);
+		                    System.out.println("\n");
+		                }
+		            }
+		            case 2 -> {
+		                System.out.println("Relatório de Pessoas:");
+		                for (Pessoa pessoa : pessoas) {
+		                    pessoa.exibirDados();
+		                    System.out.println("\n");
+		                }
+		            }
+		            case 3 -> {
+		                System.out.println("Relatório de Avaliações Físicas:");
+		                for (Avaliacao avaliacao : avaliacoes) {
+		                    avaliacao.exibirDados();
+		                    System.out.println("\n");
+		                }
+		            }
+		            case 4 -> {
+		                // Compilar tudo
+		                System.out.println("== Relatório de Planos ==");
+		                for (Plano plano : planos) {
+		                    plano.exibir();
+		                    int contador = 0;
+		                    System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
+		                    for (Pessoa pessoa : pessoas) {
+		                        if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+		                            pessoa.exibir();
+		                            contador++;
+		                        }
+		                    }
+		                    System.out.println("Total de pessoas incluídas no plano: " + contador);
+		                    System.out.println("\n");
+		                }
+
+		                System.out.println("\n== Relatório de Pessoas ==");
+		                for (Pessoa pessoa : pessoas) {
+		                    pessoa.exibirDados();
+		                    System.out.println("\n");
+		                }
+
+		                System.out.println("\n== Relatório de Avaliações ==");
+		                for (Avaliacao avaliacao : avaliacoes) {
+		                    avaliacao.exibirDados();
+		                    System.out.println("\n");
+		                }
+		            }
+		            case 5 -> System.out.println("Voltando...");
+		            default -> System.out.println("Opção inválida, digite novamente!");
+		        }
+
+		    } while (opcao != 5);
+	
+	}
+
+	private static void calcularFaturamentoMensal(List<Pessoa> pessoas, List<Plano> planos) {
+		double totalFaturamento = 0;
+					
+		for (Plano plano : planos) {
+		    int contador = 0;
+            System.out.println("Plano " + plano.getNomePlano() + ", valor: R$" + plano.getValor());
+            for (Pessoa pessoa : pessoas) {
+                if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+                     contador++;
+                }
+            }
+            System.out.println("Total de pessoas incluídas no plano: " + contador);
+            System.out.println("\n");
+            double faturamentoPlano = contador * (plano.getValor());
+            totalFaturamento += faturamentoPlano;
+                  }
 			
-			switch (opcao) {
-			case 1 -> System.out.println("1"); //Plano.gerar(pessoas, planos);
-			case 2 -> System.out.println("2");
-			case 3 -> System.out.println("3");
-			case 4 -> System.out.println("4");
-			default -> System.out.println("Opção inválida, digite novamente!");
-			}
-
-		} while (opcao != 5);
-		return;
-	}
-
-	private static void calcularFaturamentoMensal() {
-
-	}
-}
+			System.out.printf("Faturamento total mensal:  R$ %.2f\n", totalFaturamento);
+             }
+		}

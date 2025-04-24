@@ -50,7 +50,7 @@ public class Menu {
 					MenuAluno.menuAluno(pessoas, i, avaliacoes); //sub-menu dos alunos
 					return true;
 				} else if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("funcionario")) {
-					MenuFuncionario.menuFuncionario(pessoas, planos, i); //sub-menu dos funcionarios
+					MenuFuncionario.menuFuncionario(pessoas, planos, i, avaliacoes); //sub-menu dos funcionarios
 					return true; 
 				} else {
 					MenuPersonal.menuPersonal(pessoas, i, avaliacoes); //sub-menu dos personais

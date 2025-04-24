@@ -1,8 +1,9 @@
 package org.serratec.trabalhoFinal.modelos;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 
-public class Avaliacao  {
+public class Avaliacao implements GerarRelatorio {
 	private String aluno;
 	private LocalDate data;
 	private String personalTrainer;
@@ -24,14 +25,14 @@ public class Avaliacao  {
 	}
 
 	public void exibirDados(){
-		System.out.println("Avaliação:"
-				+ "  | Aluno: " + aluno +
-				" | Data: " + data + 
-				" | Personal trainer: " + personalTrainer +
-				" | Peso : " + peso +
-				" | Altura : " + altura +
-				" | IMC:  " + imc +
-				" | Indicação: " + indicacao);
+		DecimalFormat df = new DecimalFormat ("#.#");
+		System.out.println("Avaliação de :" + aluno +
+				  " | Data: " + data + 
+				  "\nPersonal trainer: " + personalTrainer +
+				  "\nPeso : " + peso +
+				  " | Altura : " + altura +
+				  " | IMC:  " + df.format(imc) +
+				  "\nIndicação : " + indicacao);
 			}
 
 	public String getAluno() {
@@ -57,4 +58,10 @@ public class Avaliacao  {
     public double getAltura() {
         return altura;
     }
+
+	@Override
+	public void exibir() {
+		
+		
+	}
 }

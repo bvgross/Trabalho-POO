@@ -49,19 +49,13 @@ public class Plano implements GerarRelatorio{
 
 
 	@Override
-	public void gerar(List<Pessoa>pessoas, List<Plano>planos) {
-		for (Plano plano : planos) {
-			plano.exibirDados();
-		int contador = 0;
-			for(Pessoa pessoa : pessoas) {
-				if(pessoa.getPlano().equalsIgnoreCase(getNomePlano())) {
-					pessoa.getNome();
-					contador++;
-				}
-			}
-			System.out.println("Total de pessoas inlcuídas no plano: " + contador);
-		}		
+	public void exibir() {
+		System.out.println("Nome do plano: " + getNomePlano() + "------------------------");
+		
 	}
 
 
-}
+
+	}
+
+
