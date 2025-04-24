@@ -1,5 +1,5 @@
 # Trabalho Final de programação orientada à objetos.
-## Trabalho final da matéria de programação orientada à objetos da Residência em Desenvolvimento de Software do Serratec.
+#### Trabalho final da matéria de programação orientada à objetos da Residência em Desenvolvimento de Software do Serratec.
 
 ### Objetivo do sistema 
 Esse trabalho consiste em fazer um sistema de gerenciamento de uma academia.
