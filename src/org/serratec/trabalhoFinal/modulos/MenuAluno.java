@@ -45,24 +45,33 @@ public class MenuAluno {
 	private static void contratarPersonal(List<Pessoa> pessoas, Pessoa alunoAtual) {
         LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
-		List<Integer> indices = new ArrayList<>();
-		int indicePersonal = 0;
-		System.out.println("\nPersonais cadastrados:\n-------------------");
-		for (int i = 0; i < pessoas.size(); i++) {
-			if (pessoas.get(i).getTipo().equalsIgnoreCase("Personal")) {
-				System.out.print((indicePersonal + 1) + ". ");
-				pessoas.get(i).exibirDados();
-				indices.add(i);
-				indicePersonal++;
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("Escolha o número do personal: ");
-		int escolhaPersonal = sc.nextInt();
-		sc.nextLine();
-		String nomePersonalEscolhido = pessoas.get(indices.get(escolhaPersonal-1)).getNome();
-		alunoAtual.setPersonalContratado( nomePersonalEscolhido );
-		System.out.println("Personal contratado: " + nomePersonalEscolhido  );
+        List<Integer> indices = new ArrayList<>();
+        int indicePersonal = 0;
+        System.out.println("\nPersonais cadastrados:\n-------------------");
+        for (int i = 0; i < pessoas.size(); i++) {
+            if (pessoas.get(i).getTipo().equalsIgnoreCase("Personal")) {
+                System.out.print((indicePersonal + 1) + ". ");
+                pessoas.get(i).exibirDados();
+                indices.add(i);
+                indicePersonal++;
+            }
+        }
+        int escolhaPersonal = 0;
+        boolean personalValido = true;
+        do{
+            System.out.println("-------------------");
+            System.out.println("Escolha o número do personal: ");
+            escolhaPersonal = sc.nextInt();
+            sc.nextLine();
+            if(escolhaPersonal < 1 || escolhaPersonal > indicePersonal) {
+                System.out.println("Personal inválido, digite novamente!");
+                personalValido = false;
+            } else {personalValido = true;}
+        } while (!personalValido);
+        String nomePersonalEscolhido = pessoas.get(indices.get(escolhaPersonal-1)).getNome();
+        alunoAtual.setPersonalContratado( nomePersonalEscolhido );
+        System.out.println("Personal contratado: " + nomePersonalEscolhido  );
+
         Salvar.salvar(pessoas);
         System.out.println("\nAperte enter para continuar...");
         sc.nextLine();

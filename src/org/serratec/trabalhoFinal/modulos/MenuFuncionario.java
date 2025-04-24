@@ -134,8 +134,16 @@ public class MenuFuncionario {
         Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Aluno: ");
 		String nome = sc.nextLine();
-		System.out.println("Digite o CPF do Aluno: ");
-		String cpf = sc.nextLine();
+        boolean cpfValido = true;
+        String cpf = "default";
+        do {
+            System.out.println("Digite o CPF do Aluno (###.###.###-##): ");
+            cpf = sc.nextLine();
+            if (cpf.length() != 14) {
+                cpfValido = false;
+                System.out.println("CPF inválido, digite novamente atentando-se ao formato (###.###.###-##)");
+            } else cpfValido = true;
+        } while (!cpfValido);
 		System.out.println("Digite a senha do Aluno: ");
 		String senha = sc.nextLine();
 		System.out.print("\nPlanos:\n-------------------\n");
@@ -158,14 +166,30 @@ public class MenuFuncionario {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Personal: ");
 		String nome = sc.nextLine();
-		System.out.println("Digite o CPF do Personal: ");
-		String cpf = sc.nextLine();
+        boolean cpfValido = true;
+        String cpf = "default";
+        do {
+            System.out.println("Digite o CPF do Personal (###.###.###-##): ");
+            cpf = sc.nextLine();
+            if (cpf.length() != 14) {
+                cpfValido = false;
+                System.out.println("CPF inválido, digite novamente atentando-se ao formato (###.###.###-##)");
+            } else cpfValido = true;
+        } while (!cpfValido);
 		System.out.println("Digite a senha do Personal: ");
 		String senha = sc.nextLine();
 		System.out.println("Digite a especialidade: ");
 		String especialidade = sc.nextLine();
-		System.out.println("Digite o CREF: ");
-		String cref = sc.nextLine();
+        boolean crefValido = true;
+        String cref = "default";
+        do {
+            System.out.println("Digite o CREF do Personal (UF-123456): ");
+            cref = sc.nextLine();
+            if (cref.length() != 9) {
+                crefValido = false;
+                System.out.println("CREF inválido, digite novamente atentando-se ao formato (UF-123456)");
+            } else crefValido = true;
+        } while (!crefValido);
 		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
 		System.out.println("PERSONAL CADASTRADO.");
         Salvar.salvar(pessoas);
@@ -191,6 +215,7 @@ public class MenuFuncionario {
 
 		        switch (opcao) {
 		            case 1 -> {
+                        System.out.println("Relatório de Planos:\n");
 		                for (Plano plano : planos) {
 		                    plano.exibir();
 		                    int contador = 0;
@@ -208,16 +233,17 @@ public class MenuFuncionario {
                         sc.nextLine();
 		            }
 		            case 2 -> {
-		                System.out.println("Relatório de Pessoas:");
+		                System.out.println("Relatório de Pessoas:\n");
 		                for (Pessoa pessoa : pessoas) {
+                            if(!pessoa.getNome().equalsIgnoreCase("ADMIN")){
 		                    pessoa.exibirDados();
-		                    System.out.println("\n");
+                            }
 		                }
                         System.out.println("\nAperte enter para continuar...");
                         sc.nextLine();
 		            }
 		            case 3 -> {
-		                System.out.println("Relatório de Avaliações Físicas:");
+		                System.out.println("Relatório de Avaliações Físicas:\n");
 		                for (Avaliacao avaliacao : avaliacoes) {
 		                    avaliacao.exibirDados();
 		                    System.out.println("\n");
@@ -296,5 +322,6 @@ public class MenuFuncionario {
         System.out.println("Relatório gerado no arquivo \"relatorio.txt\". Aperte enter para continuar...");
         sc.nextLine();
     }
+
 }
 

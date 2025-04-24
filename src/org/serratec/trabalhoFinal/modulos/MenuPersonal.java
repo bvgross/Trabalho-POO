@@ -24,7 +24,7 @@ public class MenuPersonal {
 					2. Registrar avaliações dos alunos.
 					3. Visualizar lista de avaliações.
 					4. Visualizar avaliação por período.
-					. Sair.
+					5. Sair.
 							""");
 			opcao = sc.nextInt();
 			sc.nextLine();
@@ -85,26 +85,33 @@ public class MenuPersonal {
 	private static void registrarAvaliacao(List<Avaliacao> avaliacoes, List<Pessoa> pessoas, Pessoa personalAtual) {
         LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
-		List<Integer> indices = new ArrayList<>();
-		int indiceAluno = 0;
-		System.out.println("\nAlunos cadastrados:\n-------------------");
-		for (int i = 0; i < pessoas.size(); i++) {
-			if (pessoas.get(i).getPersonalContratado() != null &&
-					pessoas.get(i).getTipo().equalsIgnoreCase("aluno") &&
-					pessoas.get(i).getPersonalContratado().equalsIgnoreCase(personalAtual.getNome())) {
-				System.out.print((indiceAluno + 1) + ". ");
-				pessoas.get(i).exibirDados();
-				indices.add(i);
-				indiceAluno++;
-			}
-		}
-		System.out.println("-------------------");
-		System.out.println("Nenhum aluno inscrito com você.");
-		if (indiceAluno == 0) return;
-		System.out.println("Escolha o número do aluno: ");
-		int escolhaAluno = sc.nextInt();
-		sc.nextLine();
-		String nome = pessoas.get(indices.get(escolhaAluno-1)).getNome();
+        List<Integer> indices = new ArrayList<>();
+        int indiceAluno = 0;
+        System.out.println("\nAlunos cadastrados:\n-------------------");
+        for (int i = 0; i < pessoas.size(); i++) {
+            if (pessoas.get(i).getPersonalContratado() != null &&
+                pessoas.get(i).getPersonalContratado().equalsIgnoreCase(personalAtual.getNome()) &&
+                pessoas.get(i).getTipo().equalsIgnoreCase("Aluno")) {
+                System.out.print((indiceAluno + 1) + ". ");
+                pessoas.get(i).exibirDados();
+                indices.add(i);
+                indiceAluno++;
+            }
+        }
+        int escolhaAluno = 0;
+        boolean alunoValido = true;
+        do{
+            System.out.println("-------------------");
+            System.out.println("Escolha o número do aluno: ");
+            escolhaAluno = sc.nextInt();
+            sc.nextLine();
+            if(escolhaAluno < 1 || escolhaAluno > indiceAluno) {
+                System.out.println("Aluno inválido, digite novamente!");
+                alunoValido = false;
+            } else {alunoValido = true;}
+        } while (!alunoValido);
+        String nomeAlunoEscolhido = pessoas.get(indices.get(escolhaAluno-1)).getNome();
+
 		System.out.println("Digite a altura do Aluno: ");
 		double altura = sc.nextDouble();
 		sc.nextLine();
@@ -113,7 +120,7 @@ public class MenuPersonal {
 		sc.nextLine();
 		System.out.println("Digite a indicação para o aluno:  ");
 		String indicacao = sc.nextLine();
-		avaliacoes.add(new Avaliacao(nome, LocalDate.now(),personalAtual.getNome(), indicacao, peso, altura ));
+		avaliacoes.add(new Avaliacao(nomeAlunoEscolhido, LocalDate.now(),personalAtual.getNome(), indicacao, peso, altura ));
 		Salvar.salvar(avaliacoes);
         System.out.println("\nAperte enter para continuar...");
         sc.nextLine();

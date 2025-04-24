@@ -1,10 +1,10 @@
 package org.serratec.trabalhoFinal.principal;
 
-import org.serratec.trabalhoFinal.modulos.Menu;
+import org.serratec.trabalhoFinal.modulos.Login;
 
 public class SistemaAcademia {
 	public static void main(String[] args) {
-        Menu menu = new Menu();
-        menu.menu();
+        Login login = new Login();
+        login.login();
 	}
 }
