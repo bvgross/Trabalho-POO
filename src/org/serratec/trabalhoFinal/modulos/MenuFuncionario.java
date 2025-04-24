@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
+import org.serratec.trabalhoFinal.exception.CpfDuplicadoException;
 import org.serratec.trabalhoFinal.modelos.Aluno;
 import org.serratec.trabalhoFinal.modelos.Avaliacao;
 import org.serratec.trabalhoFinal.modelos.Frequencia;
@@ -17,12 +18,12 @@ import org.serratec.trabalhoFinal.modelos.Plano;
 
 public class MenuFuncionario {
 
-	public static void menuFuncionario(List<Pessoa> pessoas, List<Plano> planos, int i, List<Avaliacao> avaliacoes) {
+	public static void menuFuncionario(List<Pessoa> pessoas, List<Plano> planos, int i, List<Avaliacao> avaliacoes) throws Exception {
 		Scanner sc = new Scanner(System.in);
-        Pessoa funcionarioAtual = pessoas.get(i);
+		Pessoa funcionarioAtual = pessoas.get(i);
 		int opcao;
 		do {
-            LimparTela.Limpar();
+			LimparTela.Limpar();
 			String nome = funcionarioAtual.getNome();
 			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
 			System.out.println("""
@@ -34,7 +35,7 @@ public class MenuFuncionario {
 					5. Valor total a receber no mês.
 					6. Sair.
 							""");
-			
+
 			opcao = sc.nextInt();
 			sc.nextLine();
 
@@ -47,7 +48,7 @@ public class MenuFuncionario {
 			case 6 -> {System.out.println("Encerrando aplicação...");
 			return;} // retorna para o Login.
 			default -> System.out.println("Opção inválida, digite novamente!");
-				
+
 
 			}
 
@@ -55,7 +56,7 @@ public class MenuFuncionario {
 	}
 
 	private static void cadastrarPlano(List<Plano> planos){
-        LimparTela.Limpar();
+		LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("---------- Novo Plano ----------");
 		System.out.println("Nome: ");
@@ -123,205 +124,226 @@ public class MenuFuncionario {
 
 		planos.add(new Plano(nomePlano, frequencia, periodicidade, valor, descricao));
 		System.out.println("\nPLANO CADASTRADO.");
-        Salvar.salvar(planos);
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
+		Salvar.salvar(planos);
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
 	}
 
 
-	private static void cadastrarAluno(List<Pessoa> pessoas, List<Plano> listaPlanos) {
-        LimparTela.Limpar();
-        Scanner sc = new Scanner(System.in);
-		System.out.println("Digite o nome do Aluno: ");
-		String nome = sc.nextLine();
-        boolean cpfValido = true;
-        String cpf = "default";
-        do {
-            System.out.println("Digite o CPF do Aluno (###.###.###-##): ");
-            cpf = sc.nextLine();
-            if (cpf.length() != 14) {
-                cpfValido = false;
-                System.out.println("CPF inválido, digite novamente atentando-se ao formato (###.###.###-##)");
-            } else cpfValido = true;
-        } while (!cpfValido);
-		System.out.println("Digite a senha do Aluno: ");
-		String senha = sc.nextLine();
-		System.out.print("\nPlanos:\n-------------------\n");
-		for (int i = 0; i < listaPlanos.size(); i++) {
-			System.out.print((i + 1) + ". ");
-			listaPlanos.get(i).exibirDados();
+	private static void cadastrarAluno(List<Pessoa> pessoas, List<Plano> listaPlanos) throws CpfDuplicadoException {
+		LimparTela.Limpar();
+		Scanner sc = new Scanner(System.in);
+		while (true) {
+			try {
+				System.out.println("Digite o nome do Aluno: ");
+				String nome = sc.nextLine();
+
+				String cpf;
+				boolean cpfValido;
+				do {
+					System.out.println("Digite o CPF do Aluno (###.###.###-##): ");
+					cpf = sc.nextLine();
+					if (cpf.length() != 14) {
+						cpfValido = false;
+						System.out.println("CPF inválido, digite novamente atentando-se ao formato (###.###.###-##)");
+					} else {
+						cpfValido = true;
+					}
+				} while (!cpfValido);
+
+				// Verificação de CPF duplicado
+				for (Pessoa pessoa : pessoas) {
+					if (pessoa.getCpf().equals(cpf)) {
+						throw new CpfDuplicadoException(cpf);
+					}
+					System.out.println("Digite a senha do Aluno: ");
+					String senha = sc.nextLine();
+					System.out.print("\nPlanos:\n-------------------\n");
+					for (int i = 0; i < listaPlanos.size(); i++) {
+						System.out.print((i + 1) + ". ");
+						listaPlanos.get(i).exibirDados();
+					}
+
+					System.out.println("Escolha o número do plano: ");
+					int escolhaPlano = sc.nextInt();
+					sc.nextLine();
+					pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(escolhaPlano - 1).getNomePlano()));
+					System.out.println("ALUNO CADASTRADO.");
+					Salvar.salvar(pessoas);
+					System.out.println("\nAperte enter para continuar...");
+					sc.nextLine();
+
+				}
+			} catch (CpfDuplicadoException e) {
+				System.out.println(e.getMessage());
+				System.out.println("Tente novamente.\n");
+			}
+
 		}
-		System.out.println("Escolha o número do plano: ");
-		int escolhaPlano = sc.nextInt();
-		sc.nextLine();
-        pessoas.add(new Aluno(nome, cpf, senha, LocalDate.now(), listaPlanos.get(escolhaPlano - 1).getNomePlano()));
-        System.out.println("ALUNO CADASTRADO.");
-        Salvar.salvar(pessoas);
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
+
 	}
 
 	private static void cadastrarPersonal(List<Pessoa> pessoas) {
-        LimparTela.Limpar();
+		LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Digite o nome do Personal: ");
 		String nome = sc.nextLine();
-        boolean cpfValido = true;
-        String cpf = "default";
-        do {
-            System.out.println("Digite o CPF do Personal (###.###.###-##): ");
-            cpf = sc.nextLine();
-            if (cpf.length() != 14) {
-                cpfValido = false;
-                System.out.println("CPF inválido, digite novamente atentando-se ao formato (###.###.###-##)");
-            } else cpfValido = true;
-        } while (!cpfValido);
+		boolean cpfValido = true;
+		String cpf = "default";
+		do {
+			System.out.println("Digite o CPF do Personal (###.###.###-##): ");
+			cpf = sc.nextLine();
+			if (cpf.length() != 14) {
+				cpfValido = false;
+				System.out.println("CPF inválido, digite novamente atentando-se ao formato (###.###.###-##)");
+			} else cpfValido = true;
+		} while (!cpfValido);
 		System.out.println("Digite a senha do Personal: ");
 		String senha = sc.nextLine();
 		System.out.println("Digite a especialidade: ");
 		String especialidade = sc.nextLine();
-        boolean crefValido = true;
-        String cref = "default";
-        do {
-            System.out.println("Digite o CREF do Personal (UF-123456): ");
-            cref = sc.nextLine();
-            if (cref.length() != 9) {
-                crefValido = false;
-                System.out.println("CREF inválido, digite novamente atentando-se ao formato (UF-123456)");
-            } else crefValido = true;
-        } while (!crefValido);
+		boolean crefValido = true;
+		String cref = "default";
+		do {
+			System.out.println("Digite o CREF do Personal (UF-123456): ");
+			cref = sc.nextLine();
+			if (cref.length() != 9) {
+				crefValido = false;
+				System.out.println("CREF inválido, digite novamente atentando-se ao formato (UF-123456)");
+			} else crefValido = true;
+		} while (!crefValido);
 		pessoas.add(new Personal(nome, cpf, senha, especialidade, cref));
 		System.out.println("PERSONAL CADASTRADO.");
-        Salvar.salvar(pessoas);
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
+		Salvar.salvar(pessoas);
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
 	}
 
 	private static void emitirRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
 		int opcao;
 		do {
-              LimparTela.Limpar();
-			  System.out.println("""
-		                Emitir relatórios:
-		                1. Gerar relatório de planos.
-		                2. Gerar relatório de pessoas.
-		                3. Gerar relação de avaliações físicas.
-		                4. Compilar todos os relatórios anteriores.
-		                5. Voltar para o menu anterior.
-		                """);
-		        opcao = sc.nextInt();
-		        sc.nextLine();
+			LimparTela.Limpar();
+			System.out.println("""
+					Emitir relatórios:
+					1. Gerar relatório de planos.
+					2. Gerar relatório de pessoas.
+					3. Gerar relação de avaliações físicas.
+					4. Compilar todos os relatórios anteriores.
+					5. Voltar para o menu anterior.
+					""");
+			opcao = sc.nextInt();
+			sc.nextLine();
 
-		        switch (opcao) {
-		            case 1 -> {
-                        System.out.println("Relatório de Planos:\n");
-		                for (Plano plano : planos) {
-		                    plano.exibir();
-		                    int contador = 0;
-		                    System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
-		                    for (Pessoa pessoa : pessoas) {
-		                        if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
-		                           pessoa.exibir();
-                                   contador++;
-		                        }
-		                    }
-		                    System.out.println("Total de pessoas incluídas no plano: " + contador);
-		                    System.out.println("\n");
-		                }
-                        System.out.println("\nAperte enter para continuar...");
-                        sc.nextLine();
-		            }
-		            case 2 -> {
-		                System.out.println("Relatório de Pessoas:\n");
-		                for (Pessoa pessoa : pessoas) {
-                            if(!pessoa.getNome().equalsIgnoreCase("ADMIN")){
-		                    pessoa.exibirDados();
-                            }
-		                }
-                        System.out.println("\nAperte enter para continuar...");
-                        sc.nextLine();
-		            }
-		            case 3 -> {
-		                System.out.println("Relatório de Avaliações Físicas:\n");
-		                for (Avaliacao avaliacao : avaliacoes) {
-		                    avaliacao.exibirDados();
-		                    System.out.println("\n");
-		                }
-                        System.out.println("\nAperte enter para continuar...");
-                        sc.nextLine();
-		            }
-		            case 4 -> gerarArqivoRelatorios(pessoas, planos, avaliacoes);
-		            case 5 -> System.out.println("Voltando...");
-		            default -> System.out.println("Opção inválida, digite novamente!");
-		        }
+			switch (opcao) {
+			case 1 -> {
+				System.out.println("Relatório de Planos:\n");
+				for (Plano plano : planos) {
+					plano.exibir();
+					int contador = 0;
+					System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
+					for (Pessoa pessoa : pessoas) {
+						if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+							pessoa.exibir();
+							contador++;
+						}
+					}
+					System.out.println("Total de pessoas incluídas no plano: " + contador);
+					System.out.println("\n");
+				}
+				System.out.println("\nAperte enter para continuar...");
+				sc.nextLine();
+			}
+			case 2 -> {
+				System.out.println("Relatório de Pessoas:\n");
+				for (Pessoa pessoa : pessoas) {
+					if(!pessoa.getNome().equalsIgnoreCase("ADMIN")){
+						pessoa.exibirDados();
+					}
+				}
+				System.out.println("\nAperte enter para continuar...");
+				sc.nextLine();
+			}
+			case 3 -> {
+				System.out.println("Relatório de Avaliações Físicas:\n");
+				for (Avaliacao avaliacao : avaliacoes) {
+					avaliacao.exibirDados();
+					System.out.println("\n");
+				}
+				System.out.println("\nAperte enter para continuar...");
+				sc.nextLine();
+			}
+			case 4 -> gerarArqivoRelatorios(pessoas, planos, avaliacoes);
+			case 5 -> System.out.println("Voltando...");
+			default -> System.out.println("Opção inválida, digite novamente!");
+			}
 
-		    } while (opcao != 5);
-	
+		} while (opcao != 5);
+
 	}
 
 	private static void calcularFaturamentoMensal(List<Pessoa> pessoas, List<Plano> planos) {
-        LimparTela.Limpar();
+		LimparTela.Limpar();
 		Scanner sc = new Scanner(System.in);
-        double totalFaturamento = 0;
-					
-        for (Plano plano : planos) {
-            int contador = 0;
-            System.out.println("Plano " + plano.getNomePlano() + ", valor: R$" + plano.getValor());
-            for (Pessoa pessoa : pessoas) {
-                if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
-                contador++;
-                }
-            }
-            System.out.println("Total de pessoas incluídas no plano: " + contador);
-            System.out.println("\n");
-            double faturamentoPlano = contador * (plano.getValor());
-            totalFaturamento += faturamentoPlano;
-        }
-			
-        System.out.printf("Faturamento total mensal:  R$ %.2f\n", totalFaturamento);
-        System.out.println("\nAperte enter para continuar...");
-        sc.nextLine();
-    }
+		double totalFaturamento = 0;
 
-    private static void gerarArqivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
-        Scanner sc = new Scanner(System.in);
-        PrintStream outputOriginal = System.out; //salvar o estado atual do output, ou seja, imprimindo no terminal
-        try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio.txt"))) {
-            System.setOut(txtRelatorio); //capturando o output de tudo que acontece daqui pra baixo para o arquivo
-            // Compilar tudo
-            System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
-            for (Plano plano : planos) {
-                plano.exibir();
-                int contador = 0;
-                System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
-                for (Pessoa pessoa : pessoas) {
-                    if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
-                        pessoa.exibir();
-                        contador++;
-                    }
-                }
-                System.out.println("Total de pessoas incluídas no plano: " + contador + "\n");
-            }
+		for (Plano plano : planos) {
+			int contador = 0;
+			System.out.println("Plano " + plano.getNomePlano() + ", valor: R$" + plano.getValor());
+			for (Pessoa pessoa : pessoas) {
+				if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+					contador++;
+				}
+			}
+			System.out.println("Total de pessoas incluídas no plano: " + contador);
+			System.out.println("\n");
+			double faturamentoPlano = contador * (plano.getValor());
+			totalFaturamento += faturamentoPlano;
+		}
 
-            System.out.println("\n== Relatório de Pessoas ==\n-----------------------------------------------");
-            for (Pessoa pessoa : pessoas) {
-                pessoa.exibirDados();
-            }
-            System.out.println("\n");
+		System.out.printf("Faturamento total mensal:  R$ %.2f\n", totalFaturamento);
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
+	}
 
-            System.out.println("\n== Relatório de Avaliações ==\n-----------------------------------------------");
-            for (Avaliacao avaliacao : avaliacoes) {
-                avaliacao.exibirDados();
-                System.out.println("\n");
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        System.setOut(outputOriginal); //retornando ao output original, o terminal
-        System.out.println("Relatório gerado no arquivo \"relatorio.txt\". Aperte enter para continuar...");
-        sc.nextLine();
-    }
+	private static void gerarArqivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
+		Scanner sc = new Scanner(System.in);
+		PrintStream outputOriginal = System.out; //salvar o estado atual do output, ou seja, imprimindo no terminal
+		try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio.txt"))) {
+			System.setOut(txtRelatorio); //capturando o output de tudo que acontece daqui pra baixo para o arquivo
+			// Compilar tudo
+			System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
+			for (Plano plano : planos) {
+				plano.exibir();
+				int contador = 0;
+				System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
+				for (Pessoa pessoa : pessoas) {
+					if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+						pessoa.exibir();
+						contador++;
+					}
+				}
+				System.out.println("Total de pessoas incluídas no plano: " + contador + "\n");
+			}
+
+			System.out.println("\n== Relatório de Pessoas ==\n-----------------------------------------------");
+			for (Pessoa pessoa : pessoas) {
+				pessoa.exibirDados();
+			}
+			System.out.println("\n");
+
+			System.out.println("\n== Relatório de Avaliações ==\n-----------------------------------------------");
+			for (Avaliacao avaliacao : avaliacoes) {
+				avaliacao.exibirDados();
+				System.out.println("\n");
+			}
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+		System.setOut(outputOriginal); //retornando ao output original, o terminal
+		System.out.println("Relatório gerado no arquivo \"relatorio.txt\". Aperte enter para continuar...");
+		sc.nextLine();
+	}
 
 }
 

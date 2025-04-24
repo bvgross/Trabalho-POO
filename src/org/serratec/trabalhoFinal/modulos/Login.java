@@ -4,11 +4,19 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
-import org.serratec.trabalhoFinal.modelos.*;
+import org.serratec.trabalhoFinal.modelos.Aluno;
+import org.serratec.trabalhoFinal.modelos.Avaliacao;
+import org.serratec.trabalhoFinal.modelos.Cargo;
+import org.serratec.trabalhoFinal.modelos.Funcionario;
+import org.serratec.trabalhoFinal.modelos.Personal;
+import org.serratec.trabalhoFinal.modelos.Pessoa;
+import org.serratec.trabalhoFinal.modelos.Plano;
+
+
 
 public class Login {
 	Scanner sc = new Scanner(System.in);
-	public void login() {
+	public void login() throws Exception {
 		//criando lista e populando com 1 de cada tipo de pessoa
 		List<Pessoa> pessoas = Carregar.carregarPessoas();
 		List<Avaliacao> avaliacoes = Carregar.carregarAvaliacoes();
@@ -51,7 +59,7 @@ public class Login {
         }
 	}
 
-	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes, List<Plano> planos) {
+	public boolean confefirLogin(List<Pessoa> pessoas, String cpf, String senha, List<Avaliacao> avaliacoes, List<Plano> planos) throws Exception {
 		for (int i = 0; i < pessoas.size(); i++) {
 			if (cpf.equals(pessoas.get(i).getCpf()) && senha.equals(pessoas.get(i).getSenha())) {
 				if (pessoas.get(i).getClass().getSimpleName().equalsIgnoreCase("aluno")) {

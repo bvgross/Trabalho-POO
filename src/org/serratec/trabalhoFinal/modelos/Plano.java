@@ -1,7 +1,5 @@
 package org.serratec.trabalhoFinal.modelos;
 
-import java.util.List;
-
 public class Plano implements GerarRelatorio{
 	private String nomePlano;
 	private Frequencia frequencia;
