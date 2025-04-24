@@ -34,6 +34,7 @@ public class MenuFuncionario {
 					5. Valor total a receber no mês.
 					6. Sair.
 							""");
+			
 			opcao = sc.nextInt();
 			sc.nextLine();
 
@@ -43,8 +44,10 @@ public class MenuFuncionario {
 			case 3 -> cadastrarPersonal(pessoas);
 			case 4 -> emitirRelatorios(pessoas, planos, avaliacoes);
 			case 5 -> calcularFaturamentoMensal(pessoas, planos);
-			case 6 -> System.out.println("Encerrando aplicação...");
+			case 6 -> {System.out.println("Encerrando aplicação...");
+			return;} // retorna para o Login.
 			default -> System.out.println("Opção inválida, digite novamente!");
+				
 
 			}
 

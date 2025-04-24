@@ -17,13 +17,14 @@ public class MenuPersonal {
 		do {
             LimparTela.Limpar();
 			String nome = personalAtual.getNome();
-			System.out.println("\n========== Bem vindo(a), " + nome + "! ==========");
+			System.out.println("\n========== Personal Trainer " + nome + "! ==========");
 			System.out.println("""
 					Digite a opção desejada: 
 					1. Visualizar alunos.
 					2. Registrar avaliações dos alunos.
 					3. Visualizar lista de avaliações.
-					4. Sair.
+					4. Visualizar avaliação por período.
+					. Sair.
 							""");
 			opcao = sc.nextInt();
 			sc.nextLine();
@@ -32,12 +33,40 @@ public class MenuPersonal {
 			case 1 -> visualizarAlunos(pessoas, personalAtual);
 			case 2 -> registrarAvaliacao(avaliacoes, pessoas, personalAtual);
 			case 3 -> visualizarAvaliacoes(avaliacoes, personalAtual);
-			case 4 -> System.out.println("Encerrando aplicação...");
+			case 4 -> visualizarAvaliacoesPorPeriodo(avaliacoes, personalAtual);
+			case 5 -> {System.out.println("Encerrando aplicação...");
+			return; } // retorna para Login
 			default -> System.out.println("Opção inválida, digite novamente!");
 
 			}
 
-		} while(opcao != 4);
+		} while(opcao != 5);
+	}
+
+	private static void visualizarAvaliacoesPorPeriodo(List<Avaliacao> avaliacoes, Pessoa personalAtual) {
+		LimparTela.Limpar();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Digite a data inicial (AAAA-MM-DD): ");
+		LocalDate dataInicial = LocalDate.parse(sc.nextLine());
+		System.out.println("Digite a data final (AAAA-MM-DD): ");
+		LocalDate dataFinal = LocalDate.parse(sc.nextLine());
+
+		System.out.println("\nAvaliações entre " + dataInicial + " e " + dataFinal + ":\n");
+
+		boolean encontrou = false;
+		for (Avaliacao a : avaliacoes) {
+			if (a.getPersonalTrainer().equalsIgnoreCase(personalAtual.getNome()) &&
+					(a.getData().isEqual(dataInicial) || a.getData().isAfter(dataInicial)) &&
+					(a.getData().isEqual(dataFinal) || a.getData().isBefore(dataFinal))) {
+				a.exibirDados();
+				System.out.println();
+				encontrou = true;
+			}
+		}
+
+		if (!encontrou) System.out.println("Nenhuma avaliação encontrada nesse período.");
+		System.out.println("\nAperte enter para continuar...");
+		sc.nextLine();
 	}
 
 	private static void visualizarAvaliacoes(List<Avaliacao> avaliacoes, Pessoa personalAtual) {
@@ -72,7 +101,7 @@ public class MenuPersonal {
 		System.out.println("-------------------");
 		System.out.println("Nenhum aluno inscrito com você.");
 		if (indiceAluno == 0) return;
-		System.out.println("Escolha o número do alunp: ");
+		System.out.println("Escolha o número do aluno: ");
 		int escolhaAluno = sc.nextInt();
 		sc.nextLine();
 		String nome = pessoas.get(indices.get(escolhaAluno-1)).getNome();
