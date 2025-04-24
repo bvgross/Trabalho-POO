@@ -1,0 +1,61 @@
+== Relatório de Planos ==
+-----------------------------------------------
+Nome do plano: Combo Total
+Pessoas incluídas no plano Combo Total:
+- Bruno Gross
+- Laryssa Campos
+- Paulo Roberto
+Total de pessoas incluídas no plano: 3
+
+Nome do plano: Musculação
+Pessoas incluídas no plano Musculação:
+- Beatriz Pinheiro
+- Aline Mielli
+Total de pessoas incluídas no plano: 2
+
+
+== Relatório de Pessoas ==
+-----------------------------------------------
+Nome: Beatriz Pinheiro | CPF: 222 | Data da matrícula: 2025-04-23 | Plano: Musculação | Personal Contratado: Leticia Teles
+Nome: Bruno Gross | CPF: 333 | Data da matrícula: 2025-04-23 | Plano: Combo Total | Personal Contratado: Victor Campos
+Nome: Aline Mielli | CPF: 444 | Data da matrícula: 2025-04-23 | Plano: Musculação | Personal Contratado: Victor Campos
+Nome: Victor Campos | CREF: 999-99/9 | Especialidade: Coach
+Nome: Leticia Teles | CREF: 888-88/8 | Especialidade: Dança
+Nome: Laryssa Campos | CPF: 555 | Data da matrícula: 2025-04-23 | Plano: Combo Total | Personal Contratado: Victor Campos
+Nome: Paulo Roberto | CPF: 666 | Data da matrícula: 2025-04-23 | Plano: Combo Total | Personal Contratado: Leticia Teles
+Nome: Atendente | Cargo: ATENDENTE
+
+
+
+== Relatório de Avaliações ==
+-----------------------------------------------
+Avaliação de :Paulo Roberto | Data: 2025-04-23
+Personal trainer: Leticia Teles
+Peso : 75.2 | Altura : 1.79 | IMC:  23.5
+Indicação : Mais regularidade na atividade física.
+
+
+Avaliação de :Beatriz Pinheiro | Data: 2025-04-23
+Personal trainer: Leticia Teles
+Peso : 49.0 | Altura : 1.6 | IMC:  19.1
+Indicação : Aumentar carga na musculação.
+
+
+Avaliação de :Laryssa Campos | Data: 2025-04-23
+Personal trainer: Victor Campos
+Peso : 59.0 | Altura : 1.62 | IMC:  22.5
+Indicação : Mais regularidade nos treinos.
+
+
+Avaliação de :Laryssa Campos | Data: 2025-04-23
+Personal trainer: Victor Campos
+Peso : 57.0 | Altura : 1.62 | IMC:  21.7
+Indicação : Continuar na pegada.
+
+
+Avaliação de :Aline Mielli | Data: 2025-04-23
+Personal trainer: Victor Campos
+Peso : 55.0 | Altura : 1.64 | IMC:  20.4
+Indicação : Começar a se exercitar.
+
+

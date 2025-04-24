@@ -1,5 +1,8 @@
 package org.serratec.trabalhoFinal.modulos;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -219,36 +222,7 @@ public class MenuFuncionario {
                         System.out.println("\nAperte enter para continuar...");
                         sc.nextLine();
 		            }
-		            case 4 -> {
-		                // Compilar tudo
-		                System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
-		                for (Plano plano : planos) {
-		                    plano.exibir();
-		                    int contador = 0;
-		                    System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
-		                    for (Pessoa pessoa : pessoas) {
-		                        if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
-		                            pessoa.exibir();
-		                            contador++;
-		                        }
-		                    }
-		                    System.out.println("Total de pessoas incluídas no plano: " + contador + "\n");
-		                }
-
-		                System.out.println("\n== Relatório de Pessoas ==\n-----------------------------------------------");
-		                for (Pessoa pessoa : pessoas) {
-		                    pessoa.exibirDados();
-		                }
-                        System.out.println("\n");
-
-		                System.out.println("\n== Relatório de Avaliações ==\n-----------------------------------------------");
-		                for (Avaliacao avaliacao : avaliacoes) {
-		                    avaliacao.exibirDados();
-		                    System.out.println("\n");
-		                }
-                        System.out.println("\nAperte enter para continuar...");
-                        sc.nextLine();
-		            }
+		            case 4 -> gerarArqivoRelatorios(pessoas, planos, avaliacoes);
 		            case 5 -> System.out.println("Voltando...");
 		            default -> System.out.println("Opção inválida, digite novamente!");
 		        }
@@ -278,6 +252,45 @@ public class MenuFuncionario {
 			
         System.out.printf("Faturamento total mensal:  R$ %.2f\n", totalFaturamento);
         System.out.println("\nAperte enter para continuar...");
+        sc.nextLine();
+    }
+
+    private static void gerarArqivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
+        Scanner sc = new Scanner(System.in);
+        PrintStream outputOriginal = System.out; //salvar o estado atual do output, ou seja, imprimindo no terminal
+        try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio.txt"))) {
+            System.setOut(txtRelatorio); //capturando o output de tudo que acontece daqui pra baixo para o arquivo
+            // Compilar tudo
+            System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
+            for (Plano plano : planos) {
+                plano.exibir();
+                int contador = 0;
+                System.out.println("Pessoas incluídas no plano " + plano.getNomePlano() + ":");
+                for (Pessoa pessoa : pessoas) {
+                    if (plano.getNomePlano().equalsIgnoreCase(pessoa.getPlano())) {
+                        pessoa.exibir();
+                        contador++;
+                    }
+                }
+                System.out.println("Total de pessoas incluídas no plano: " + contador + "\n");
+            }
+
+            System.out.println("\n== Relatório de Pessoas ==\n-----------------------------------------------");
+            for (Pessoa pessoa : pessoas) {
+                pessoa.exibirDados();
+            }
+            System.out.println("\n");
+
+            System.out.println("\n== Relatório de Avaliações ==\n-----------------------------------------------");
+            for (Avaliacao avaliacao : avaliacoes) {
+                avaliacao.exibirDados();
+                System.out.println("\n");
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        System.setOut(outputOriginal); //retornando ao output original, o terminal
+        System.out.println("Relatório gerado no arquivo \"relatorio.txt\". Aperte enter para continuar...");
         sc.nextLine();
     }
 }
