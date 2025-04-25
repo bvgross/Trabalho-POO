@@ -273,7 +273,7 @@ public class MenuFuncionario {
 				System.out.println("\nAperte enter para continuar...");
 				sc.nextLine();
 			}
-			case 4 -> gerarArqivoRelatorios(pessoas, planos, avaliacoes);
+			case 4 -> gerarArquivoRelatorios(pessoas, planos, avaliacoes);
 			case 5 -> System.out.println("Voltando...");
 			default -> System.out.println("Opção inválida, digite novamente!");
 			}
@@ -306,7 +306,7 @@ public class MenuFuncionario {
 		sc.nextLine();
 	}
 
-	private static void gerarArqivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
+	private static void gerarArquivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
 		PrintStream outputOriginal = System.out; //salvar o estado atual do output, ou seja, imprimindo no terminal
 		try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio.txt"))) {
