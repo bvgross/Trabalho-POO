@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Scanner;
 
@@ -309,7 +310,7 @@ public class MenuFuncionario {
 	private static void gerarArquivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
 		PrintStream outputOriginal = System.out; //salvar o estado atual do output, ou seja, imprimindo no terminal
-		try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio.txt"))) {
+		try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio" + LocalDateTime.now() + ".txt"))) {
 			System.setOut(txtRelatorio); //capturando o output de tudo que acontece daqui pra baixo para o arquivo
 			// Compilar tudo
 			System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
@@ -341,7 +342,7 @@ public class MenuFuncionario {
 			throw new RuntimeException(e);
 		}
 		System.setOut(outputOriginal); //retornando ao output original, o terminal
-		System.out.println("Relatório gerado no arquivo \"relatorio.txt\". Aperte enter para continuar...");
+		System.out.println("Relatório gerado no arquivo \"relatorio" + LocalDateTime.now() + ".txt\". Aperte enter para continuar...");
 		sc.nextLine();
 	}
 

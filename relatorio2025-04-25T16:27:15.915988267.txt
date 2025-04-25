@@ -1,0 +1,304 @@
+== Relatório de Planos ==
+-----------------------------------------------
+Nome do plano: Combo Mensal
+Pessoas incluídas no plano Combo Mensal:
+- Victor Campos
+- Paulo Roberto Silva
+- Beatriz Gomes
+- Manuela Ferreira
+- Sr. Thomas Martins
+- Sr. Gustavo Rodrigues
+- Sra. Yasmin Fogaça
+- Lorenzo Mendes
+- Srta. Milena Rocha
+- Teste
+Total de pessoas incluídas no plano: 10
+
+Nome do plano: Combo Total
+Pessoas incluídas no plano Combo Total:
+- Letíca Teles
+- Beatriz Pinheiro
+- Isabelly Gonçalves
+- Srta. Isadora Teixeira
+- Helena da Luz
+- Thales da Rosa
+- Júlia Fernandes
+- Renan Correia
+- Henrique Cardoso
+- Emanuel Santiago
+- Ana Júlia Martins
+Total de pessoas incluídas no plano: 11
+
+Nome do plano: Plano Básico
+Pessoas incluídas no plano Plano Básico:
+- Bruno Gross
+- Laryssa Peixoto
+- José Carlos Boretto
+- Luiz Guilherme Ramos
+- Vinícius Lopes
+- Clarice Silveira
+- Enzo Ribeiro
+- Pedro Viana
+- Sr. Rafael Costa
+- Lucas Vieira
+Total de pessoas incluídas no plano: 10
+
+Nome do plano: Combo Estudante
+Pessoas incluídas no plano Combo Estudante:
+- Aline Mielli
+- Rayca Nascimento
+- Sophie Peixoto
+- Srta. Nina Melo
+- Ricardo Farias
+- João Otávio Souza
+- Arthur Monteiro
+- Camila Matos
+- Marcela Souza
+Total de pessoas incluídas no plano: 9
+
+
+== Relatório de Pessoas ==
+-----------------------------------------------
+Nome: Bruno Gross | CPF: 369.675.318-16 | Data da matrícula: 2025-04-24 | Plano: Plano Básico | Personal Contratado: null
+Nome: Letíca Teles | CPF: 465.987.123-12 | Data da matrícula: 2025-04-24 | Plano: Combo Total | Personal Contratado: null
+Nome: Beatriz Pinheiro | CPF: 564.357.987-51 | Data da matrícula: 2025-04-24 | Plano: Combo Total | Personal Contratado: null
+Nome: Victor Campos | CPF: 491.953.657-87 | Data da matrícula: 2025-04-24 | Plano: Combo Mensal | Personal Contratado: null
+Nome: Aline Mielli | CPF: 278.689.159-14 | Data da matrícula: 2025-04-24 | Plano: Combo Estudante | Personal Contratado: null
+Nome: Rayca Nascimento | CPF: 549.631.781-31 | Data da matrícula: 2025-04-24 | Plano: Combo Estudante | Personal Contratado: null
+Nome: Laryssa Peixoto | CPF: 412.957.582-15 | Data da matrícula: 2025-04-24 | Plano: Plano Básico | Personal Contratado: null
+Nome: Paulo Roberto Silva | CPF: 457.241.987-71 | Data da matrícula: 2025-04-24 | Plano: Combo Mensal | Personal Contratado: Sabrina Siqueira
+Nome: José Carlos Boretto | CPF: 412.123.821-21 | Data da matrícula: 2025-04-24 | Plano: Plano Básico | Personal Contratado: Sabrina Siqueira
+Nome: Sophie Peixoto | CPF: 047.326.589-38 | Data da matrícula: 2024-01-30 | Plano: Combo Estudante | Personal Contratado: Daniel Lopes
+Nome: Beatriz Gomes | CPF: 214.756.830-90 | Data da matrícula: 2023-02-11 | Plano: Combo Mensal | Personal Contratado: Adriana Franco
+Nome: Srta. Nina Melo | CPF: 781.236.945-55 | Data da matrícula: 2024-06-07 | Plano: Combo Estudante | Personal Contratado: Daniel Lopes
+Nome: Manuela Ferreira | CPF: 089.753.621-59 | Data da matrícula: 2024-02-19 | Plano: Combo Mensal | Personal Contratado: Sabrina Siqueira
+Nome: Sr. Thomas Martins | CPF: 138.964.702-13 | Data da matrícula: 2024-05-03 | Plano: Combo Mensal | Personal Contratado: Daniel Lopes
+Nome: Isabelly Gonçalves | CPF: 108.194.732-00 | Data da matrícula: 2024-11-27 | Plano: Combo Total | Personal Contratado: Adriana Franco
+Nome: Luiz Guilherme Ramos | CPF: 813.768.215-76 | Data da matrícula: 2024-10-15 | Plano: Plano Básico | Personal Contratado: Sabrina Siqueira
+Nome: Srta. Isadora Teixeira | CPF: 024.867.359-88 | Data da matrícula: 2023-05-02 | Plano: Combo Total | Personal Contratado: Daniel Lopes
+Nome: Sr. Gustavo Rodrigues | CPF: 302.581.934-27 | Data da matrícula: 2024-06-19 | Plano: Combo Mensal | Personal Contratado: Daniel Lopes
+Nome: Vinícius Lopes | CPF: 093.658.401-95 | Data da matrícula: 2023-12-02 | Plano: Plano Básico | Personal Contratado: Adriana Franco
+Nome: Helena da Luz | CPF: 698.130.542-60 | Data da matrícula: 2024-10-10 | Plano: Combo Total | Personal Contratado: Sabrina Siqueira
+Nome: Ricardo Farias | CPF: 493.701.638-00 | Data da matrícula: 2023-10-23 | Plano: Combo Estudante | Personal Contratado: Daniel Lopes
+Nome: Sra. Yasmin Fogaça | CPF: 368.157.901-53 | Data da matrícula: 2024-07-26 | Plano: Combo Mensal | Personal Contratado: Adriana Franco
+Nome: Thales da Rosa | CPF: 163.045.897-09 | Data da matrícula: 2023-01-06 | Plano: Combo Total | Personal Contratado: Sabrina Siqueira
+Nome: João Otávio Souza | CPF: 798.243.126-75 | Data da matrícula: 2023-12-15 | Plano: Combo Estudante | Personal Contratado: Daniel Lopes
+Nome: Clarice Silveira | CPF: 082.196.045-31 | Data da matrícula: 2024-04-13 | Plano: Plano Básico | Personal Contratado: Adriana Franco
+Nome: Lorenzo Mendes | CPF: 487.536.290-17 | Data da matrícula: 2023-07-01 | Plano: Combo Mensal | Personal Contratado: Sabrina Siqueira
+Nome: Arthur Monteiro | CPF: 234.768.905-69 | Data da matrícula: 2023-04-06 | Plano: Combo Estudante | Personal Contratado: Daniel Lopes
+Nome: Júlia Fernandes | CPF: 173.409.856-20 | Data da matrícula: 2024-03-22 | Plano: Combo Total | Personal Contratado: Adriana Franco
+Nome: Renan Correia | CPF: 074.215.936-81 | Data da matrícula: 2023-06-09 | Plano: Combo Total | Personal Contratado: Daniel Lopes
+Nome: Camila Matos | CPF: 248.397.530-02 | Data da matrícula: 2023-11-03 | Plano: Combo Estudante | Personal Contratado: Sabrina Siqueira
+Nome: Srta. Milena Rocha | CPF: 675.024.813-44 | Data da matrícula: 2024-02-06 | Plano: Combo Mensal | Personal Contratado: Adriana Franco
+Nome: Enzo Ribeiro | CPF: 304.217.968-34 | Data da matrícula: 2023-03-08 | Plano: Plano Básico | Personal Contratado: Sabrina Siqueira
+Nome: Pedro Viana | CPF: 158.364.020-99 | Data da matrícula: 2023-12-21 | Plano: Plano Básico | Personal Contratado: Daniel Lopes
+Nome: Henrique Cardoso | CPF: 905.174.362-84 | Data da matrícula: 2024-09-05 | Plano: Combo Total | Personal Contratado: Adriana Franco
+Nome: Sr. Rafael Costa | CPF: 582.130.647-30 | Data da matrícula: 2023-02-17 | Plano: Plano Básico | Personal Contratado: Daniel Lopes
+Nome: Emanuel Santiago | CPF: 204.569.871-43 | Data da matrícula: 2023-09-18 | Plano: Combo Total | Personal Contratado: Sabrina Siqueira
+Nome: Marcela Souza | CPF: 351.942.807-57 | Data da matrícula: 2023-08-06 | Plano: Combo Estudante | Personal Contratado: Adriana Franco
+Nome: Lucas Vieira | CPF: 697.314.205-18 | Data da matrícula: 2023-04-25 | Plano: Plano Básico | Personal Contratado: Sabrina Siqueira
+Nome: Ana Júlia Martins | CPF: 542.681.397-00 | Data da matrícula: 2023-05-30 | Plano: Combo Total | Personal Contratado: Daniel Lopes
+Nome: Sabrina Siqueira | CREF: RJ-432478 | Especialidade: Hipertrofia
+Nome: Adriana Franco | CREF: RJ-987124 | Especialidade: Pilates
+Nome: Daniel Lopes | CREF: RJ-875111 | Especialidade: Spinning
+Nome: Teste | CPF: 11111111111111 | Data da matrícula: 2025-04-25 | Plano: Combo Mensal | Personal Contratado: null
+Nome: ADMIN | Cargo: ATENDENTE
+Nome: ADMIN | CPF: 222 | Data da matrícula: 2025-04-25 | Plano: admin | Personal Contratado: null
+Nome: ADMIN | CREF: admin | Especialidade: admin
+
+
+
+== Relatório de Avaliações ==
+-----------------------------------------------
+Avaliação de :Paulo Roberto Silva | Data: 2025-04-21
+Personal trainer: Sabrina Siqueira
+Peso : 59.8 | Altura : 1.74 | IMC:  19.8
+Indicação : Ganho de resistência.
+
+
+Avaliação de :José Carlos Boretto | Data: 2024-11-03
+Personal trainer: Sabrina Siqueira
+Peso : 62.1 | Altura : 1.62 | IMC:  23.7
+Indicação : Melhorar postura.
+
+
+Avaliação de :Sophie Peixoto | Data: 2024-11-26
+Personal trainer: Daniel Lopes
+Peso : 77.5 | Altura : 1.8 | IMC:  23.9
+Indicação : Definir musculatura.
+
+
+Avaliação de :Beatriz Gomes | Data: 2023-02-09
+Personal trainer: Adriana Franco
+Peso : 80.1 | Altura : 1.81 | IMC:  24.4
+Indicação : Focar em treino funcional.
+
+
+Avaliação de :Srta. Nina Melo | Data: 2024-07-07
+Personal trainer: Daniel Lopes
+Peso : 75.2 | Altura : 1.79 | IMC:  23.5
+Indicação : Desenvolver flexibilidade.
+
+
+Avaliação de :Manuela Ferreira | Data: 2025-01-10
+Personal trainer: Sabrina Siqueira
+Peso : 60.2 | Altura : 1.66 | IMC:  21.8
+Indicação : Fazer mais aeróbico.
+
+
+Avaliação de :Sr. Thomas Martins | Data: 2023-07-14
+Personal trainer: Daniel Lopes
+Peso : 76.5 | Altura : 1.73 | IMC:  25.6
+Indicação : Fortalecer o abdomen.
+
+
+Avaliação de :Isabelly Gonçalves | Data: 2023-09-09
+Personal trainer: Adriana Franco
+Peso : 83.8 | Altura : 1.68 | IMC:  29.7
+Indicação : Treinar resistência cardiovascular.
+
+
+Avaliação de :Luiz Guilherme Ramos | Data: 2024-10-09
+Personal trainer: Sabrina Siqueira
+Peso : 62.7 | Altura : 1.65 | IMC:  23
+Indicação : Melhorar condicionamento físico.
+
+
+Avaliação de :Srta. Isadora Teixeira | Data: 2023-06-14
+Personal trainer: Daniel Lopes
+Peso : 81.2 | Altura : 1.78 | IMC:  25.6
+Indicação : Trabalhar mobilidade.
+
+
+Avaliação de :Sr. Gustavo Rodrigues | Data: 2025-04-09
+Personal trainer: Daniel Lopes
+Peso : 73.7 | Altura : 1.67 | IMC:  26.4
+Indicação : Diminuir gordura corporal.
+
+
+Avaliação de :Vinícius Lopes | Data: 2023-11-28
+Personal trainer: Adriana Franco
+Peso : 78.4 | Altura : 1.71 | IMC:  26.8
+Indicação : Aumentar disposição.
+
+
+Avaliação de :Helena da Luz | Data: 2023-05-08
+Personal trainer: Sabrina Siqueira
+Peso : 61.5 | Altura : 1.77 | IMC:  19.6
+Indicação : Melhorar equilíbrio.
+
+
+Avaliação de :Ricardo Farias | Data: 2024-02-24
+Personal trainer: Daniel Lopes
+Peso : 68.2 | Altura : 1.61 | IMC:  26.3
+Indicação : Ganho de massa magra.
+
+
+Avaliação de :Sra. Yasmin Fogaça | Data: 2023-01-17
+Personal trainer: Adriana Franco
+Peso : 74.1 | Altura : 1.63 | IMC:  27.9
+Indicação : Ganho de massa muscular.
+
+
+Avaliação de :Thales da Rosa | Data: 2024-10-02
+Personal trainer: Sabrina Siqueira
+Peso : 64.3 | Altura : 1.74 | IMC:  21.2
+Indicação : Foco em condicionamento.
+
+
+Avaliação de :João Otávio Souza | Data: 2023-09-29
+Personal trainer: Daniel Lopes
+Peso : 77.6 | Altura : 1.83 | IMC:  23.2
+Indicação : Perder peso.
+
+
+Avaliação de :Clarice Silveira | Data: 2024-06-22
+Personal trainer: Adriana Franco
+Peso : 55.7 | Altura : 1.62 | IMC:  21.2
+Indicação : Treinos leves para articulação.
+
+
+Avaliação de :Lorenzo Mendes | Data: 2023-08-19
+Personal trainer: Sabrina Siqueira
+Peso : 73.9 | Altura : 1.72 | IMC:  25
+Indicação : Ganho de força.
+
+
+Avaliação de :Arthur Monteiro | Data: 2024-05-18
+Personal trainer: Daniel Lopes
+Peso : 82.4 | Altura : 1.65 | IMC:  30.3
+Indicação : Melhorar resistência.
+
+
+Avaliação de :Júlia Fernandes | Data: 2023-12-12
+Personal trainer: Adriana Franco
+Peso : 67.8 | Altura : 1.7 | IMC:  23.5
+Indicação : Trabalho de força.
+
+
+Avaliação de :Renan Correia | Data: 2024-08-01
+Personal trainer: Daniel Lopes
+Peso : 70.1 | Altura : 1.66 | IMC:  25.4
+Indicação : Reduzir estresse.
+
+
+Avaliação de :Camila Matos | Data: 2023-01-11
+Personal trainer: Sabrina Siqueira
+Peso : 61.0 | Altura : 1.69 | IMC:  21.4
+Indicação : Alongamentos e cardio.
+
+
+Avaliação de :Srta. Milena Rocha | Data: 2024-01-19
+Personal trainer: Adriana Franco
+Peso : 66.9 | Altura : 1.73 | IMC:  22.4
+Indicação : Foco em core.
+
+
+Avaliação de :Enzo Ribeiro | Data: 2023-03-22
+Personal trainer: Sabrina Siqueira
+Peso : 54.4 | Altura : 1.6 | IMC:  21.2
+Indicação : Aprimorar agilidade.
+
+
+Avaliação de :Pedro Viana | Data: 2025-02-04
+Personal trainer: Daniel Lopes
+Peso : 78.6 | Altura : 1.77 | IMC:  25.1
+Indicação : Foco em hipertrofia.
+
+
+Avaliação de :Henrique Cardoso | Data: 2023-10-30
+Personal trainer: Adriana Franco
+Peso : 81.9 | Altura : 1.64 | IMC:  30.5
+Indicação : Trabalhar resistência.
+
+
+Avaliação de :Sr. Rafael Costa | Data: 2023-04-20
+Personal trainer: Daniel Lopes
+Peso : 75.0 | Altura : 1.69 | IMC:  26.3
+Indicação : Condicionamento geral.
+
+
+Avaliação de :Emanuel Santiago | Data: 2024-12-20
+Personal trainer: Sabrina Siqueira
+Peso : 70.9 | Altura : 1.7 | IMC:  24.5
+Indicação : Ganho de definição.
+
+
+Avaliação de :Marcela Souza | Data: 2024-04-30
+Personal trainer: Adriana Franco
+Peso : 63.1 | Altura : 1.75 | IMC:  20.6
+Indicação : Melhorar postura.
+
+
+Avaliação de :Lucas Vieira | Data: 2023-10-12
+Personal trainer: Sabrina Siqueira
+Peso : 68.7 | Altura : 1.68 | IMC:  24.3
+Indicação : Ganho de força e mobilidade.
+
+
+Avaliação de :Ana Júlia Martins | Data: 2023-07-23
+Personal trainer: Daniel Lopes
+Peso : 59.3 | Altura : 1.76 | IMC:  19.1
+Indicação : Foco em cardio e resistência.
+
+
