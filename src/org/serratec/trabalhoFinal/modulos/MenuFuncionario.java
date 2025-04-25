@@ -310,7 +310,7 @@ public class MenuFuncionario {
 	private static void gerarArquivoRelatorios(List<Pessoa> pessoas, List<Plano> planos, List<Avaliacao> avaliacoes) {
 		Scanner sc = new Scanner(System.in);
 		PrintStream outputOriginal = System.out; //salvar o estado atual do output, ou seja, imprimindo no terminal
-		try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio" + LocalDateTime.now() + ".txt"))) {
+		try(PrintStream txtRelatorio = new PrintStream(new FileOutputStream("relatorio" + LocalDate.now() + ".txt"))) {
 			System.setOut(txtRelatorio); //capturando o output de tudo que acontece daqui pra baixo para o arquivo
 			// Compilar tudo
 			System.out.println("== Relatório de Planos ==\n-----------------------------------------------");
