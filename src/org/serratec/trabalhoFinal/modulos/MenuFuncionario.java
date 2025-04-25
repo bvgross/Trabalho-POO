@@ -11,6 +11,7 @@ import java.util.Scanner;
 import org.serratec.trabalhoFinal.exception.CpfDuplicadoException;
 import org.serratec.trabalhoFinal.modelos.Aluno;
 import org.serratec.trabalhoFinal.modelos.Avaliacao;
+import org.serratec.trabalhoFinal.modelos.Cargo;
 import org.serratec.trabalhoFinal.modelos.Frequencia;
 import org.serratec.trabalhoFinal.modelos.Periodicidade;
 import org.serratec.trabalhoFinal.modelos.Personal;
@@ -22,6 +23,14 @@ public class MenuFuncionario {
 	public static void menuFuncionario(List<Pessoa> pessoas, List<Plano> planos, int i, List<Avaliacao> avaliacoes) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		Pessoa funcionarioAtual = pessoas.get(i);
+		
+		 Cargo cargo = funcionarioAtual.getCargo();
+		    if (cargo != Cargo.ATENDENTE && cargo != Cargo.GERENTE) {
+		        System.out.println("Acesso negado. Apenas atendentes ou gerentes podem acessar este menu.");
+		        return;
+		    }
+		
+		
 		int opcao;
 		do {
 			LimparTela.Limpar();
