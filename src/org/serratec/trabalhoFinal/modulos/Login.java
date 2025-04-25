@@ -26,6 +26,7 @@ public class Login {
         Pessoa funcionarioAdmin = new Funcionario("ADMIN", "111", "1234", Cargo.ATENDENTE);
         funcionarioAdmin.setTipo("ADMIN");
         Pessoa funcionarioCoordenador = new Funcionario("COORD", "123", "1234", Cargo.COORDENADOR);
+        funcionarioCoordenador.setTipo("COORD");
         Pessoa alunoAdmin = new Aluno("ADMIN", "222", "1234", LocalDate.now(), "admin");
         alunoAdmin.setTipo("ADMIN");
         Pessoa personalAdmin = new Personal("ADMIN", "333", "1234", "admin", "admin");

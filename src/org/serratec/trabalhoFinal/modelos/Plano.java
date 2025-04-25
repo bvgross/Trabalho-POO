@@ -1,12 +1,13 @@
 package org.serratec.trabalhoFinal.modelos;
 
+
 public class Plano implements GerarRelatorio{
 	private String nomePlano;
 	private Frequencia frequencia;
 	private Periodicidade periodicidade;	
 	private double valor;
 	private String descricaoPlano;
-
+	
 
 	public Plano(String nomePlano, Frequencia frequencia, Periodicidade periodicidade, double valor,
 			String descricaoPlano) {

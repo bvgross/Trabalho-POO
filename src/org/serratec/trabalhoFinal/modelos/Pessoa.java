@@ -6,7 +6,8 @@ public abstract class Pessoa implements GerarRelatorio {
 	private String nome;
 	private String cpf;
 	private String senha;
-
+	
+	 
 	public Pessoa(String nome, String cpf, String senha) {
 		this.nome = nome;
 		this.cpf = cpf;

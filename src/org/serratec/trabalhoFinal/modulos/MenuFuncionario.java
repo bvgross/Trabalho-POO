@@ -182,6 +182,7 @@ public class MenuFuncionario {
 					Salvar.salvar(pessoas);
 					System.out.println("\nAperte enter para continuar...");
 					sc.nextLine();
+					return;
 
 				}
 			} catch (CpfDuplicadoException e) {
